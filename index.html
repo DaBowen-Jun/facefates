@@ -194,6 +194,34 @@
   .refs a{color:var(--muted);text-decoration:none;}
   .refs a:hover{color:var(--gold);}
 
+  /* ========== 命盘分享卡（可截图传播） ========== */
+  .share-card-wrap{display:flex;justify-content:center;padding:10px 0 4px;}
+  .share-card{position:relative;width:440px;max-width:100%;border-radius:22px;background:linear-gradient(155deg,#241D14 0%,#191409 100%);border:1px solid var(--gold);box-shadow:0 18px 42px rgba(0,0,0,.45), inset 0 0 0 1px rgba(201,162,75,.12);padding:22px 24px;overflow:hidden;}
+  .share-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 88% -15%, rgba(201,162,75,.16), transparent 52%);pointer-events:none;}
+  .sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;position:relative;}
+  .sc-brand{font-family:"Noto Serif SC",serif;font-weight:700;font-size:18px;color:var(--gold-lite);letter-spacing:2px;}
+  .sc-seal{writing-mode:vertical-rl;font-family:"Noto Serif SC",serif;font-size:11px;color:var(--ink);background:var(--gold);padding:7px 5px;border-radius:6px;line-height:1.45;letter-spacing:2px;font-weight:700;}
+  .sc-main{display:flex;gap:18px;align-items:center;position:relative;}
+  .sc-face{position:relative;width:104px;height:104px;border-radius:18px;overflow:hidden;flex-shrink:0;background:var(--slot);border:1px solid var(--gold);}
+  .sc-face img{width:100%;height:100%;object-fit:cover;display:none;}
+  .sc-emblem{position:absolute;right:-7px;bottom:-7px;width:38px;height:38px;border-radius:11px;background:var(--gold);color:var(--ink);font-family:"Noto Serif SC",serif;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;border:2px solid #191409;}
+  .sc-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px;}
+  .sc-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:18px;line-height:25px;color:var(--cream);}
+  .sc-chips{display:flex;gap:6px;flex-wrap:wrap;}
+  .sc-chip{padding:3px 10px;border-radius:999px;background:rgba(201,162,75,.16);border:1px solid var(--gold);color:var(--gold-lite);font-size:11px;font-weight:500;}
+  .sc-els{display:flex;flex-direction:column;gap:5px;margin-top:2px;}
+  .sc-el-row{display:flex;align-items:center;gap:8px;font-size:11px;}
+  .sc-el-name{width:16px;font-family:"Noto Serif SC",serif;font-weight:700;}
+  .sc-el-track{flex:1;height:6px;border-radius:3px;background:var(--track);overflow:hidden;}
+  .sc-el-fill{height:100%;border-radius:3px;}
+  .sc-el-val{width:22px;text-align:right;color:var(--muted);font-weight:500;}
+  .sc-dims{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px;}
+  .sc-dim{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--muted);}
+  .sc-dim-bar{width:40px;height:4px;border-radius:2px;background:var(--track);overflow:hidden;}
+  .sc-dim-fill{height:100%;}
+  .sc-quote{margin-top:16px;padding-top:13px;border-top:1px dashed rgba(201,162,75,.3);font-family:"Noto Serif SC",serif;font-size:13px;line-height:22px;color:var(--gold-lite);text-align:center;}
+  .sc-foot{margin-top:13px;text-align:center;font-size:10px;color:var(--faint);letter-spacing:.4px;}
+
   @media (max-width:860px){
     .home-body{flex-direction:column;padding:32px 20px;gap:36px;}.left-col{width:100%;}.h1{font-size:34px;line-height:46px;}
     .nav{padding:0 20px;}.result-head{flex-direction:column;align-items:flex-start;padding:28px 20px;gap:20px;}
@@ -288,7 +316,7 @@
       <span class="brand-name">一照知运</span>
       <div class="nav-actions">
         <span class="nav-link" data-i18n="save">保存命盘</span>
-        <span class="nav-link" data-i18n="share">分享</span>
+        <span class="nav-link" id="shareLink" data-i18n="share">分享</span>
         <button class="lang-toggle" data-lang-btn>EN</button>
       </div>
     </nav>
@@ -542,6 +570,27 @@
         </div>
         <!-- 参考典籍 -->
         <div class="refs" data-i18n="refs">参考典籍：《紫微斗数命理学》（令东来）、《紫微斗数精成》（大德山人）、《紫微斗数南北派断诀》（朱云山）、《钦天四化紫微斗数命理学》（许铨仁）、《紫微斗数初级讲义》（天翼术数）、《陆斌兆紫微斗数讲义评注》、《中国古代算命术》（洪丕谟/姜玉珍）</div>
+      </div>
+
+      <!-- 命盘分享卡（可截图传播） -->
+      <div class="share-card-wrap" id="shareCard">
+        <div class="share-card">
+          <div class="sc-top">
+            <span class="sc-brand">一照知运</span>
+            <span class="sc-seal">面相<br>·<br>五行</span>
+          </div>
+          <div class="sc-main">
+            <div class="sc-face"><img id="scFace" alt="面相" /><span class="sc-emblem" id="scEmblem">命</span></div>
+            <div class="sc-info">
+              <div class="sc-title" id="scTitle"></div>
+              <div class="sc-chips" id="scChips"></div>
+              <div class="sc-els" id="scEls"></div>
+              <div class="sc-dims" id="scDims"></div>
+            </div>
+          </div>
+          <div class="sc-quote" id="scQuote"></div>
+          <div class="sc-foot">面相 · 五行 · 拍照趣味测算 — dabowen-jun.github.io/facefates</div>
+        </div>
       </div>
 
       <div class="footer-cta">
@@ -1092,6 +1141,16 @@
       +'</div>'
       +'<div class="refs">'+T('参考典籍：《紫微斗数命理学》（令东来）、《紫微斗数精成》（大德山人）、《紫微斗数南北派断诀》（朱云山）、《钦天四化紫微斗数命理学》（许铨仁）、《紫微斗数初级讲义》（天翼术数）、《陆斌兆紫微斗数讲义评注》、《中国古代算命术》（洪丕谟/姜玉珍）',
         'References: "Ziwei Dou Shu Ming Li Xue" (Ling Donglai), "Ziwei Dou Shu Jing Cheng" (Da De Shan Ren), "Nan Bei Pai Duan Jue" (Zhu Yunshan), "Qin Tian Si Hua" (Xu Quanren), "Ziwei Dou Shu Primary Lectures" (Tian Yi), "Lu Bin Zuo Lecture Notes", "Ancient Chinese Fortune-Telling Arts" (Hong Pi Mo / Jiang Yu Zhen)')+'</div>';
+
+    /* —— 命盘分享卡 —— */
+    const scFaceEl = $('scFace');
+    if(scFaceEl){ const src = (resultFace && resultFace.src) ? resultFace.src : ''; if(src && src.indexOf('data:')===0){ scFaceEl.src = src; scFaceEl.style.display='block'; } }
+    $('scEmblem').textContent = r.star.g;
+    $('scTitle').innerHTML = T(EL[r.dm].zh+'命 · '+r.star.shortZh+'坐命', EL[r.dm].en+' Fate · '+r.star.shortEn+' in Destiny');
+    $('scChips').innerHTML = '<span class="sc-chip">'+T(EL[r.dm].zh+'旺',EL[r.dm].en+' Strong')+'</span><span class="sc-chip">'+T(r.star.temperZh,r.star.temperEn)+'</span><span class="sc-chip">'+T(DIRSHORT[r.dm].zh,DIRSHORT[r.dm].en)+'</span>';
+    $('scEls').innerHTML = ORDER.map(k=>{ const v=r.els[k], e=EL[k]; return '<div class="sc-el-row"><span class="sc-el-name" style="color:'+e.color+'">'+T(e.zh,e.en)+'</span><div class="sc-el-track"><div class="sc-el-fill" style="width:'+v+'%;background:'+e.color+'"></div></div><span class="sc-el-val">'+v+'</span></div>'; }).join('');
+    $('scDims').innerHTML = r.dims.map(d=>{ return '<div class="sc-dim"><span style="color:'+d.color+'">'+T(d.nameZh,d.nameEn)+'</span><div class="sc-dim-bar"><div class="sc-dim-fill" style="width:'+d.score+'%;background:'+d.color+'"></div></div><span style="color:var(--muted)">'+d.score+'</span></div>'; }).join('');
+    $('scQuote').innerHTML = T('一照知运 · 命理示人以趋势，非定数；命运掌握在自己手中。','One Snap, Know Your Fortune · Metaphysics reveals trends, not destiny — your life is in your own hands.');
   }
 
   $('reshuffleBtn').addEventListener('click', function(){
@@ -1126,6 +1185,27 @@
   fileInput.addEventListener('change', e=>{ if(e.target.files[0]) useUploadedFile(e.target.files[0]); });
   $('cancelBtn').addEventListener('click', resetToHome);
   $('rephotoBtn').addEventListener('click', resetToHome);
+
+  /* ===================== 分享 ===================== */
+  function toast(msg){
+    let t = document.getElementById('toast');
+    if(!t){ t = document.createElement('div'); t.id='toast'; t.style.cssText='position:fixed;left:50%;bottom:34px;transform:translateX(-50%);background:rgba(20,17,10,.96);color:var(--gold-lite);border:1px solid var(--gold);padding:11px 20px;border-radius:999px;font-size:13px;z-index:99999;opacity:0;transition:opacity .25s;pointer-events:none;font-family:"Noto Sans SC",sans-serif;'; document.body.appendChild(t); }
+    t.textContent = msg; t.style.opacity='1';
+    clearTimeout(t._tm); t._tm=setTimeout(function(){ t.style.opacity='0'; }, 1900);
+  }
+  const shareLinkEl = document.getElementById('shareLink');
+  if(shareLinkEl){ shareLinkEl.addEventListener('click', function(){
+    const url = (location.href || 'https://dabowen-jun.github.io/facefates/').split('#')[0];
+    const title = '一照知运 · 我的命盘';
+    const card = document.getElementById('shareCard');
+    if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
+    if(navigator.share){
+      navigator.share({ title: title, text: '我用「一照知运」测了我的面相命盘，快来试试！', url: url }).catch(function(){});
+    } else {
+      try { if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url); toast('链接已复制，去粘贴分享吧 ✦'); } else { toast('分享链接：'+url); } }
+      catch(e){ toast('分享链接：'+url); }
+    }
+  }); }
 </script>
 </body>
 </html>
