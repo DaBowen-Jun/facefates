@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>一照知运 · 拍照算命 | 面相五行趣味测算</title>
+<meta name="description" content="上传一张正脸照片，结合周易象数、传统相学与紫微斗数十二宫，为你推演财运、事业、家庭、人际与仕途五大维度的综合气运。命运掌握在自己手中，娱乐仅供参考。" />
+<!-- Open Graph / Social Share -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="一照知运 · 拍照算命 | 面相五行趣味测算" />
+<meta property="og:description" content="上传一张正脸照片，结合周易象数、传统相学与紫微斗数十二宫，为你推演财运、事业、家庭、人际与仕途五大维度的综合气运。" />
+<meta property="og:image" content="https://cc076702fc9149f98a6b5f0e7a79bf67.app.workbuddy.link/share-cover.png" />
+<meta property="og:url" content="https://cc076702fc9149f98a6b5f0e7a79bf67.app.workbuddy.link" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="一照知运 · 拍照算命" />
+<meta name="twitter:description" content="拍照算命 · 面相五行趣味测算 — 命运掌握在自己手中，娱乐仅供参考。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='none' stroke='%23C9A24B' stroke-width='1.5'/><path d='M16 2 A7 7 0 0 1 16 16 A7 7 0 0 0 16 30 A14 14 0 0 1 16 2Z' fill='%23C9A24B'/><circle cx='16' cy='9' r='2.2' fill='%2315120C'/><circle cx='16' cy='23' r='2.2' fill='%23C9A24B'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg-center:#1F1A12;--bg-edge:#12100A;--ink:#15120C;
+    --card:#1E1A13;--slot:#0E0B07;--ring-inner:#221C14;
+    --track:#2A231A;--border:#3A3128;
+    --gold:#C9A24B;--gold-lite:#E6C77E;--cream:#EDE6D8;
+    --muted:#9C9180;--faint:#6F6657;--body-text:#C9C0B0;
+    --el-metal:#E8C766;--el-wood:#7FB069;--el-water:#6FA8C7;
+    --el-fire:#C46A5A;--el-earth:#C2A05A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{font-family:"Noto Sans SC",sans-serif;color:var(--cream);background:var(--bg-edge);-webkit-font-smoothing:antialiased;}
+  .stage{min-height:100vh;width:100%;background:radial-gradient(circle at 50% 38%, var(--bg-center) 0%, var(--bg-edge) 100%);display:flex;justify-content:center;padding:0;}
+  .screen{width:100%;max-width:1280px;position:relative;}
+  .hidden{display:none !important;}
+
+  /* 导航 */
+  .nav{height:72px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand-name{font-family:"Noto Serif SC",serif;font-weight:500;font-size:20px;color:var(--gold-lite);letter-spacing:1px;}
+  .nav-link{font-size:14px;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap;}
+  .nav-right{display:flex;align-items:center;gap:18px;}
+  .lang-toggle{background:transparent;border:1px solid var(--border);color:var(--gold);font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px;cursor:pointer;font-family:"Noto Sans SC",sans-serif;white-space:nowrap;}
+  .lang-toggle:hover{border-color:var(--gold);}
+
+  /* 屏幕1 */
+  .home-body{display:flex;gap:56px;padding:56px 48px;align-items:center;min-height:calc(100vh - 72px);}
+  .left-col{width:520px;max-width:100%;display:flex;flex-direction:column;gap:22px;}
+  .eyebrow{font-weight:500;font-size:13px;color:var(--gold);letter-spacing:3px;}
+  .h1{font-family:"Noto Serif SC",serif;font-weight:700;font-size:46px;line-height:62px;color:var(--cream);}
+  .subcopy{font-size:15px;line-height:27px;color:var(--muted);}
+  .cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:var(--ink);border:none;padding:14px 30px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:"Noto Sans SC",sans-serif;}
+  .btn-ghost{background:transparent;color:var(--gold);border:1.2px solid var(--gold);padding:13px 28px;border-radius:999px;font-weight:500;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;}
+  .disclaimer{font-size:11px;line-height:18px;color:var(--faint);}
+  .right-col{flex:1;display:flex;justify-content:center;align-items:center;}
+  .camera-module{width:440px;max-width:100%;height:520px;border-radius:28px;background:var(--card);border:1px solid var(--border);padding:28px;display:flex;flex-direction:column;align-items:center;gap:22px;box-shadow:0 24px 48px rgba(0,0,0,0.35);}
+  .capture-ring{position:relative;width:300px;height:300px;}
+  .ring-border{position:absolute;inset:0;width:300px;height:300px;border-radius:150px;background:var(--ring-inner);border:1.6px solid var(--gold);}
+  .photo-slot{position:absolute;top:16px;left:16px;width:268px;height:268px;border-radius:134px;background:var(--slot);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .photo-slot video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:none;}
+  .slot-hint{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);text-align:center;padding:0 20px;}
+  .slot-hint svg{opacity:.7;}.slot-hint span{font-size:13px;}
+  .capture-btn{background:var(--gold);color:var(--ink);border:none;padding:13px 40px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;}
+  .capture-hint{font-size:13px;color:var(--muted);letter-spacing:1px;}
+
+  /* 屏幕2 */
+  .loading-body{min-height:calc(100vh - 72px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;padding:0 48px;}
+  .wu-xing-ring{width:200px;height:200px;border-radius:100px;border:1.4px solid var(--gold);
+    background:conic-gradient(from 0deg, var(--el-metal) 0deg 72deg, var(--el-wood) 72deg 144deg, var(--el-water) 144deg 216deg, var(--el-fire) 216deg 288deg, var(--el-earth) 288deg 360deg);
+    -webkit-mask:radial-gradient(circle, transparent 60px, #000 61px);mask:radial-gradient(circle, transparent 60px, #000 61px);
+    animation:spin 6s linear infinite;position:relative;}
+  .wu-xing-ring::after{content:"";position:absolute;inset:18px;border-radius:50%;background:var(--bg-center);border:1px solid var(--border);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .loading-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:30px;color:var(--cream);}
+  .loading-sub{font-size:14px;line-height:22px;color:var(--muted);text-align:center;}
+  .progress-track{width:360px;max-width:90vw;height:6px;border-radius:3px;background:var(--track);overflow:hidden;}
+  .progress-fill{height:100%;width:0%;border-radius:3px;background:var(--gold);transition:width .15s linear;}
+  .step-row{width:360px;max-width:90vw;display:flex;justify-content:space-between;}
+  .step{font-size:12px;color:var(--muted);}.step.active{color:var(--gold);font-weight:500;}
+  .progress-label{font-size:13px;color:var(--muted);letter-spacing:1px;}
+
+  /* 屏幕3 */
+  .result{padding-bottom:48px;}
+  .result-head{display:flex;gap:36px;align-items:center;padding:40px 48px;}
+  .face-thumb{width:132px;height:132px;border-radius:22px;background:var(--slot);border:1.2px solid var(--gold);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .face-thumb img{width:100%;height:100%;object-fit:cover;display:none;}
+  .face-thumb .ph{color:var(--muted);font-size:12px;}
+  .head-text{display:flex;flex-direction:column;gap:14px;}
+  .head-eyebrow{font-size:13px;color:var(--gold);font-weight:500;letter-spacing:2px;}
+  .head-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:34px;line-height:46px;color:var(--cream);}
+  .chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .chip{padding:6px 14px;border-radius:999px;background:rgba(201,162,75,0.16);border:1px solid var(--gold);color:var(--gold-lite);font-size:12px;font-weight:500;}
+  .content{display:flex;flex-direction:column;gap:44px;padding:0 48px;}
+  .sec-head{display:flex;flex-direction:column;gap:6px;}
+  .section-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:22px;color:var(--cream);letter-spacing:1px;}
+  .sys-note{font-size:13px;color:var(--faint);line-height:20px;}
+
+  /* 五行条 */
+  .five-el{display:flex;flex-direction:column;gap:16px;}
+  .el-row{display:flex;align-items:center;gap:16px;}
+  .el-name{width:32px;font-family:"Noto Serif SC",serif;font-weight:700;font-size:16px;}
+  .el-track{flex:1;height:10px;border-radius:5px;background:var(--track);overflow:hidden;}
+  .el-fill{height:100%;border-radius:5px;}
+  .el-val{width:28px;font-size:13px;color:var(--muted);font-weight:500;text-align:right;}
+
+  /* 维度卡片 */
+  .dims{display:flex;flex-wrap:wrap;gap:20px;}
+  .dim-card{width:360px;max-width:100%;border-radius:18px;background:var(--card);border:1px solid var(--border);padding:22px;display:flex;flex-direction:column;gap:12px;}
+  .dim-head{display:flex;justify-content:space-between;align-items:center;}
+  .dim-left{display:flex;align-items:center;gap:10px;}
+  .dim-icon{width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .dim-icon svg{width:24px;height:24px;display:block;}
+  .dim-text{display:flex;flex-direction:column;line-height:1.15;}
+  .dim-name{font-family:"Noto Serif SC",serif;font-weight:700;font-size:18px;color:var(--cream);}
+  .dim-sub{font-size:11px;color:var(--faint);font-weight:400;margin-top:2px;}
+  .dim-score{font-size:22px;font-weight:700;}
+  .dim-track{height:8px;border-radius:4px;background:var(--track);overflow:hidden;}
+  .dim-fill{height:100%;border-radius:4px;}
+  .dim-desc{font-size:13px;line-height:20px;color:var(--muted);}
+  .dim-deep{margin-top:4px;padding-top:10px;border-top:1px dashed rgba(58,49,40,0.5);font-size:12px;line-height:19px;color:var(--faint);overflow-wrap:break-word;}
+
+  /* 综合论断 */
+  .assess-card{border-radius:20px;background:var(--card);border:1px solid var(--border);padding:32px 36px;display:flex;flex-direction:column;gap:18px;}
+  .assess-quote{font-family:"Noto Serif SC",serif;font-weight:500;font-size:18px;line-height:28px;color:var(--gold);}
+  .assess-body{font-size:15px;line-height:28px;color:var(--body-text);overflow-wrap:break-word;}
+  .advice{display:flex;flex-direction:column;gap:12px;}
+  .advice-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:16px;color:var(--cream);}
+  .advice p{font-size:13px;line-height:22px;color:var(--muted);}
+  .footer-cta{display:flex;justify-content:center;padding:8px 0;}
+
+  /* 中华文化结语 */
+  .cultural-note{margin:24px 48px 0;padding:24px 28px 0;border-top:1px solid var(--border);text-align:center;}
+  .cultural-note .cn{font-family:"Noto Serif SC",serif;font-weight:500;font-size:15px;line-height:28px;color:var(--gold-lite);}
+  .cultural-note .en{font-size:12px;line-height:20px;color:var(--muted);margin-top:8px;}
+
+  /* ========== 深度命理解读板块 ========== */
+  .deep-section{border-radius:20px;background:var(--card);border:1px solid var(--border);padding:32px 36px;display:flex;flex-direction:column;gap:32px;overflow:hidden;}
+  .deep-block{display:flex;flex-direction:column;gap:14px;}
+  .deep-block-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .deep-block-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:18px;color:var(--cream);}
+  .deep-block-sub{font-size:12px;color:var(--faint);}
+
+  /* 十神格局 */
+  .gods{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+  .god{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:14px;background:rgba(201,162,75,0.05);border:1px solid var(--border);transition:transform .2s;overflow:hidden;}
+  .god:hover{transform:translateY(-2px);border-color:rgba(201,162,75,0.3);}
+  .god-name{font-family:"Noto Serif SC",serif;font-weight:700;font-size:15px;}
+  .god-el{font-size:11px;color:var(--faint);font-weight:400;margin-left:4px;}
+  .god-desc{font-size:12px;line-height:19px;color:var(--muted);overflow-wrap:break-word;}
+  .god-source{font-size:10px;color:var(--faint);opacity:.6;margin-top:4px;font-style:italic;}
+
+  /* 四化飞星 */
+  .sihua{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
+  .sihua-item{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:14px;background:rgba(201,162,75,0.05);border:1px solid var(--border);overflow:hidden;}
+  .sihua-header{display:flex;align-items:center;gap:8px;}
+  .sihua-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+  .sihua-name{font-family:"Noto Serif SC",serif;font-weight:700;font-size:17px;}
+  .sihua-palace{font-size:11px;color:var(--faint);padding:3px 10px;border-radius:999px;background:rgba(201,162,75,0.08);display:inline-block;width:fit-content;}
+  .sihua-desc{font-size:12px;line-height:20px;color:var(--muted);overflow-wrap:break-word;}
+  .sihua-effect{font-size:11px;line-height:18px;color:var(--gold-lite);opacity:.8;margin-top:auto;padding-top:8px;border-top:1px dashed rgba(58,49,40,0.4);overflow-wrap:break-word;}
+
+  /* 主星定位 */
+  .star-profile{display:flex;gap:20px;align-items:flex-start;padding:24px;border-radius:16px;background:rgba(201,162,75,0.04);border:1px solid var(--border);}
+  .star-emblem{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:"Noto Serif SC",serif;font-weight:700;font-size:28px;color:var(--ink);background:var(--gold);}
+  .star-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;}
+  .star-name{font-family:"Noto Serif SC",serif;font-weight:700;font-size:20px;color:var(--cream);}
+  .star-meta{font-size:12px;color:var(--faint);}
+  .star-nature{font-size:13px;line-height:21px;color:var(--muted);overflow-wrap:break-word;}
+  .star-advice{font-size:12px;line-height:19px;color:var(--gold-lite);padding-top:8px;border-top:1px dashed rgba(58,49,40,0.4);overflow-wrap:break-word;}
+
+  /* 面相三停 */
+  .face-read{display:flex;flex-direction:column;}
+  .face-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(58,49,40,0.45);}
+  .face-row:last-child{border-bottom:none;}
+  .face-part{width:80px;flex-shrink:0;font-family:"Noto Serif SC",serif;font-weight:700;font-size:15px;color:var(--gold-lite);padding-top:2px;}
+  .face-text{font-size:13px;line-height:21px;color:var(--muted);flex:1;min-width:0;overflow-wrap:break-word;}
+  .face-detail{font-size:12px;line-height:19px;color:var(--faint);margin-top:6px;padding-left:12px;border-left:2px solid rgba(201,162,75,0.25);display:block;}
+
+  /* 长生阶段 —— 改为上下结构，避免横向挤压文字 */
+  .life-stage{display:flex;flex-direction:column;gap:16px;padding:24px;border-radius:14px;background:rgba(201,162,75,0.04);border:1px solid var(--border);}
+  .life-stage-top{display:flex;align-items:center;gap:16px;}
+  .stage-ring{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;}
+  .stage-ring::before{content:'';position:absolute;inset:3px;border-radius:50%;border:1px dashed rgba(201,162,75,0.3);}
+  .stage-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;}
+  .stage-name{font-family:"Noto Serif SC",serif;font-weight:700;font-size:17px;color:var(--cream);}
+  .stage-meaning{font-size:12px;color:var(--faint);line-height:18px;}
+  .stage-desc{font-size:13px;line-height:22px;color:var(--muted);overflow-wrap:break-word;}
+  .stage-tip{font-size:12px;line-height:20px;color:var(--gold-lite);padding:12px 16px;border-radius:10px;background:rgba(201,162,75,0.06);border:1px solid rgba(201,162,75,0.15);overflow-wrap:break-word;}
+
+  /* 参考来源 */
+  .refs{font-size:11px;color:var(--faint);line-height:18px;padding:16px 0 0;border-top:1px solid rgba(58,49,40,0.4);overflow-wrap:break-word;}
+  .refs a{color:var(--muted);text-decoration:none;}
+  .refs a:hover{color:var(--gold);}
+
+  @media (max-width:860px){
+    .home-body{flex-direction:column;padding:32px 20px;gap:36px;}.left-col{width:100%;}.h1{font-size:34px;line-height:46px;}
+    .nav{padding:0 20px;}.result-head{flex-direction:column;align-items:flex-start;padding:28px 20px;gap:20px;}
+    .content{padding:0 20px;}.dim-card{width:100%;}.dims{gap:16px;}
+    .assess-card{padding:24px 22px;}.cultural-note{margin:24px 20px 0;}
+    .loading-body,.home-body{min-height:auto;padding-top:40px;padding-bottom:40px;}
+    .deep-section{padding:24px 20px;gap:26px;}
+    .gods{grid-template-columns:1fr 1fr;gap:10px;}
+    .sihua{grid-template-columns:1fr;gap:10px;}
+    .face-row{flex-direction:column;gap:6px;}.face-part{width:auto;}
+    .star-profile{flex-direction:column;align-items:center;text-align:center;}
+    .life-stage{padding:20px;gap:14px;}.life-stage-top{flex-direction:column;align-items:center;text-align:center;}
+    .stage-info{text-align:center;align-items:center;}
+  }
+</style>
+  <style media="print">
+    @page { margin: 10mm; }
+    html, body { background: #1F1A12 !important; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    #pdfWm { display: block !important; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; background-repeat: repeat; }
+    .nav, #screen-home, #screen-loading, .footer-cta, .result-head .btn-ghost { display: none !important; }
+    #screen-result { position: static !important; display: block !important; box-shadow: none !important; margin: 0 !important; width: 100% !important; background: #1F1A12 !important; padding: 0 !important; }
+    .deep-block, .dim-card, .assess-card, .star-profile, .cultural-note, .life-stage, .gods, .sihua, .face-read { break-inside: avoid; }
+  </style>
+</head>
+<body>
+  <div id="pdfWm"></div>
+
+<div class="stage">
+
+  <!-- ============ 屏幕1：拍摄首页 ============ -->
+  <section class="screen" id="screen-home">
+    <nav class="nav">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="12" stroke="#C9A24B" stroke-width="1.5"/><path d="M14 2 A6 6 0 0 1 14 14 A6 6 0 0 0 14 26 A12 12 0 0 1 14 2Z" fill="#C9A24B"/><circle cx="14" cy="8" r="2" fill="#15120C"/><circle cx="14" cy="20" r="2" fill="#C9A24B"/></svg>
+        <span class="brand-name">一照知运</span>
+      </div>
+      <div class="nav-right">
+        <span class="nav-link" data-i18n="navHistory">历史命盘</span>
+        <button class="lang-toggle" data-lang-btn>EN</button>
+      </div>
+    </nav>
+    <div class="home-body">
+      <div class="left-col">
+        <div class="eyebrow" data-i18n="eyebrow">东方命理 · 以相观运</div>
+        <h1 class="h1" data-i18n="h1">一张面相，<br/>读懂你的五行气运</h1>
+        <p class="subcopy" data-i18n="subcopy">上传一张清晰的正脸照片，结合《周易》象数、传统相学与紫微斗数十二宫，为你推演财运、事业、家庭、人际与仕途五大维度的综合气运。结果以传统文化视角趣味呈现，理性看待，仅供参考。</p>
+        <div class="cta-row">
+          <button class="btn-primary" id="startBtn" data-i18n="start">开始拍照算命</button>
+          <button class="btn-ghost" id="uploadBtn" data-i18n="upload">上传照片</button>
+        </div>
+        <p class="disclaimer" data-i18n="homeDisc">本测算为传统文化趣味推演，非科学论断，结果仅供娱乐与自省参考。</p>
+      </div>
+      <div class="right-col">
+        <div class="camera-module">
+          <div class="capture-ring"><div class="ring-border"></div><div class="photo-slot"><video id="liveVideo" autoplay playsinline muted></video><div class="slot-hint" id="slotHint"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="#9C9180" stroke-width="1.6"/><circle cx="12" cy="13" r="4" stroke="#9C9180" stroke-width="1.6"/><path d="M8 6l1.5-2h5L16 6" stroke="#9C9180" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-i18n="slotHint">正脸对准取景框</span></div></div></div>
+          <button class="capture-btn" id="captureBtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="#15120C" stroke-width="1.8"/><circle cx="12" cy="13" r="4" stroke="#15120C" stroke-width="1.8"/><path d="M8 6l1.5-2h5L16 6" stroke="#15120C" stroke-width="1.8" stroke-linejoin="round"/></svg><span data-i18n="capture">拍照</span></button>
+          <div class="capture-hint" data-i18n="captureHint">正脸 · 光线充足 · 免冠</div>
+          <input type="file" id="fileInput" accept="image/*" hidden />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 屏幕2：解析中 ============ -->
+  <section class="screen hidden" id="screen-loading">
+    <nav class="nav">
+      <span class="brand-name">一照知运</span>
+      <div class="nav-right">
+        <span class="nav-link" id="cancelBtn" data-i18n="cancel">取消</span>
+        <button class="lang-toggle" data-lang-btn>EN</button>
+      </div>
+    </nav>
+    <div class="loading-body">
+      <div class="wu-xing-ring"></div>
+      <div class="loading-title" data-i18n="loadTitle">正在推演你的命格……</div>
+      <div class="loading-sub" data-i18n="loadSub">结合《周易》象数、相学与紫微斗数十二宫，正在为你生成专属研判。</div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="step-row">
+        <span class="step" id="step1" data-i18n="step1">采集面相</span>
+        <span class="step" id="step2" data-i18n="step2">推算五行</span>
+        <span class="step" id="step3" data-i18n="step3">排布十神</span>
+        <span class="step" id="step4" data-i18n="step4">四化总断</span>
+      </div>
+      <div class="progress-label" id="progressLabel">测算进度 0%</div>
+    </div>
+  </section>
+
+  <!-- ============ 屏幕3：命格结果页（深度版） ============ -->
+  <section class="screen hidden result" id="screen-result">
+    <nav class="nav">
+      <span class="brand-name">一照知运</span>
+      <div class="nav-actions">
+        <span class="nav-link" data-i18n="save">保存命盘</span>
+        <span class="nav-link" data-i18n="share">分享</span>
+        <button class="lang-toggle" data-lang-btn>EN</button>
+      </div>
+    </nav>
+
+    <!-- 头部：面相 + 命格标题 -->
+    <div class="result-head">
+      <div class="face-thumb"><img id="resultFace" alt="面相" /><span class="ph" data-i18n="facePh">面相</span></div>
+      <div class="head-text">
+          <div class="head-eyebrow" data-i18n="headEye">命盘推演完成</div>
+          <div class="head-title" id="headTitle"></div>
+          <div class="chip-row" id="chipRow"></div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- 一、五行平衡 -->
+      <div class="sec-head">
+        <div class="section-title" data-i18n="secFive">五行平衡</div>
+        <div class="sys-note" data-i18n="sysNote">推演体系：易学五术（命·相）· 紫微斗数十四正曜 · 四化飞星 · 五行生克</div>
+      </div>
+      <div class="five-el" id="fiveEl">
+        <div class="el-row"><span class="el-name" style="color:var(--el-metal)" data-i18n="elMetal">金</span><div class="el-track"><div class="el-fill" style="width:92%;background:var(--el-metal)"></div></div><span class="el-val">92</span></div>
+        <div class="el-row"><span class="el-name" style="color:var(--el-wood)" data-i18n="elWood">木</span><div class="el-track"><div class="el-fill" style="width:48%;background:var(--el-wood)"></div></div><span class="el-val">48</span></div>
+        <div class="el-row"><span class="el-name" style="color:var(--el-water)" data-i18n="elWater">水</span><div class="el-track"><div class="el-fill" style="width:55%;background:var(--el-water)"></div></div><span class="el-val">55</span></div>
+        <div class="el-row"><span class="el-name" style="color:var(--el-fire)" data-i18n="elFire">火</span><div class="el-track"><div class="el-fill" style="width:38%;background:var(--el-fire)"></div></div><span class="el-val">38</span></div>
+        <div class="el-row"><span class="el-name" style="color:var(--el-earth)" data-i18n="elEarth">土</span><div class="el-track"><div class="el-fill" style="width:61%;background:var(--el-earth)"></div></div><span class="el-val">61</span></div>
+      </div>
+
+      <!-- 二、五大维度（深度版） -->
+      <div class="dims" id="dims">
+        <!-- 财运 / 财帛宫 -->
+        <div class="dim-card">
+          <div class="dim-head">
+            <span class="dim-left">
+              <span class="dim-icon" style="color:var(--el-metal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6"/></svg></span>
+              <span class="dim-text"><span class="dim-name" data-i18n="dimWealth">财运</span><span class="dim-sub" data-i18n="dimSubWealth">财帛宫 · Wealth Palace</span></span>
+            </span>
+            <span class="dim-score" style="color:var(--el-metal)">88</span>
+          </div>
+          <div class="dim-track"><div class="dim-fill" style="width:88%;background:var(--el-metal)"></div></div>
+          <div class="dim-desc" data-i18n="dWealth">财帛宫主财源盈虚与对待金钱的态度。金旺者财库丰实，天生有聚财之能；然金多则刚，理财宜稳不宜躁。</div>
+          <div class="dim-deep" data-i18n="dWealthDeep">【深度】财帛宫化禄入，主财源顺畅、不缺钱花，但需防"财来财去"——宜以不动产或长期投资锁住财气。参照《钦天四化》：化禄入财帛宫→善于赚钱、享受物质；配合武曲（阴金·财星）同宫，更主正财稳健。忌寅午戌月冲动太岁，大额支出易增。</div>
+        </div>
+        <!-- 事业 / 官禄宫 -->
+        <div class="dim-card">
+          <div class="dim-head">
+            <span class="dim-left">
+              <span class="dim-icon" style="color:var(--el-wood)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 19 L9 9 L13 14 L16 8 L21 19 Z"/></svg></span>
+              <span class="dim-text"><span class="dim-name" data-i18n="dimCareer">事业</span><span class="dim-sub" data-i18n="dimSubCareer">官禄宫 · Career Palace</span></span>
+            </span>
+            <span class="dim-score" style="color:var(--el-wood)">81</span>
+          </div>
+          <div class="dim-track"><div class="dim-fill" style="width:81%;background:var(--el-wood)"></div></div>
+          <div class="dim-desc" data-i18n="dCareer">官禄宫即事业宫，主工作状态、职业声望与社会地位。木主生发进取，守正持恒自有贵人相扶。</div>
+          <div class="dim-deep" data-i18n="dCareerDeep">【深度】事业宫化权入，主掌控力强、敢担当，适合管理岗与技术骨干路线。参照令东来《紫微斗数命理学》：紫微坐官禄宫者"专司爵禄……在数专司爵禄"，若会左辅右弼，"不会左右则不能贵，多劳碌"——建议主动寻求团队协作，避免单打独斗耗损精力。天机（阴木·智星）拱照，主谋略出众，宜往咨询/策划/技术专家方向发展。</div>
+        </div>
+        <!-- 家庭 / 田宅宫 -->
+        <div class="dim-card">
+          <div class="dim-head">
+            <span class="dim-left">
+              <span class="dim-icon" style="color:var(--el-water)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 11 L12 4 L20 11"/><path d="M6 10 V20 H18 V10"/><rect x="10" y="14" width="4" height="6"/></svg></span>
+              <span class="dim-text"><span class="dim-name" data-i18n="dimFamily">家庭</span><span class="dim-sub" data-i18n="dimSubFamily">田宅宫 · Property Palace</span></span>
+            </span>
+            <span class="dim-score" style="color:var(--el-water)">74</span>
+          </div>
+          <div class="dim-track"><div class="dim-fill" style="width:74%;background:var(--el-water)"></div></div>
+          <div class="dim-desc" data-i18n="dFamily">田宅宫主家宅安稳、祖产根基与不动产运势。水主滋养绵长，温言软语可保家宅安宁。</div>
+          <div class="dim-deep" data-i18n="dFamilyDeep">【深度】田宅宫化忌入，主家宅需用心经营、不宜频繁搬迁，父母关系偶有摩擦。参照朱云山《南北派断诀》：天府（阳土）坐田宅宫"天府天相三合拱照，不富即贵"，若逢禄存同宫更利置产。水弱则田宅根基稍薄，建议以"稳定居住环境"为优先考量，避免因工作变动频繁搬家而耗散地气。</div>
+        </div>
+        <!-- 人际 / 交友宫 -->
+        <div class="dim-card">
+          <div class="dim-head">
+            <span class="dim-left">
+              <span class="dim-icon" style="color:var(--el-fire)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8" r="3"/><path d="M3 20c0-3.3 3.1-5 5.5-5s5.5 1.7 5.5 5"/><circle cx="16.5" cy="9" r="2.4"/><path d="M14 20c0-2.6 2.2-4 4-4s3 1.4 3 4" opacity=".7"/></svg></span>
+              <span class="dim-text"><span class="dim-name" data-i18n="dimSocial">人际</span><span class="dim-sub" data-i18n="dimSubSocial">交友宫 · Friends Palace</span></span>
+            </span>
+            <span class="dim-score" style="color:var(--el-fire)">79</span>
+          </div>
+          <div class="dim-track"><div class="dim-fill" style="width:79%;background:var(--el-fire)"></div></div>
+          <div class="dim-desc" data-i18n="dSocial">交友宫主人缘广狭、朋友下属之助力及合作伙伴的契合度。火主礼交明快，张弛有度人缘愈广。</div>
+          <div class="dim-deep" data-i18n="dSocialDeep">【深度】交友宫化科入，主朋友有名声、得清贵之友，口碑相扶。参照《钦天四化》：化科入交友宫→朋友、下属有助力，利于团队协作与商务人脉拓展。火旺则人缘热络但易"交浅言深"，建议在社交中保持适度距离感，尤其涉及金钱往来时务必先立契约。巨门（阴土水·暗星）冲照时，防"口舌是非"——少议他人长短。</div>
+        </div>
+        <!-- 仕途 / 官禄宫分支 -->
+        <div class="dim-card">
+          <div class="dim-head">
+            <span class="dim-left">
+              <span class="dim-icon" style="color:var(--el-earth)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 9 V6 a3 3 0 0 1 6 0 V9"/><path d="M12 12 l1.5 1.6 L12 15 l-1.5-1.4 Z" fill="currentColor" stroke="none"/></svg></span>
+              <span class="dim-text"><span class="dim-name" data-i18n="dimOffice">仕途</span><span class="dim-sub" data-i18n="dimSubOffice">官禄宫 · Merit Palace</span></span>
+            </span>
+            <span class="dim-score" style="color:var(--el-earth)">70</span>
+          </div>
+          <div class="dim-track"><div class="dim-fill" style="width:70%;background:var(--el-earth)"></div></div>
+          <div class="dim-desc" data-i18n="dOffice">官禄宫主社会地位、职权范围与官方认可度。紫微为"官贵之星·官禄主"，土主承载厚积薄发。</div>
+          <div class="dim-deep" data-i18n="dOfficeDeep">【深度】参照许铨仁《钦天四化紫微斗数》：化权入官禄宫→工作狂、工作能力强、喜爱掌权。土旺者稳重踏实，但官星得分中等（70），说明"有潜力未全发"——宜在专业领域深耕积累资历，而非急于求成谋求跃升。七杀（阳金火）若照命宫，主"掌大权，能享受福德"（朱云山语），但亦需防"过于独断"。建议：考取专业资格认证、参与行业协会、积累行业口碑，为日后官星发力铺路。</div>
+        </div>
+      </div>
+
+      <!-- 三、深度命理解读区 -->
+      <div class="deep-section" id="deepSection">
+
+        <!-- 3.1 紫微主星定位 -->
+        <div class="deep-block">
+          <div class="deep-block-head">
+            <span class="deep-block-title" data-i18n="dsStar">紫微主星定位</span>
+            <span class="deep-block-sub" data-i18n="dsStarSub">十四正曜之一 · 命宫主星决定核心性格与人生走向</span>
+          </div>
+          <div class="star-profile">
+            <div class="star-emblem">紫</div>
+            <div class="star-info">
+              <div class="star-name" data-i18n="starName">紫微星 · 帝座</div>
+              <div class="star-meta" data-i18n="starMeta">阴土 · 北斗主星 · 专司爵禄 · 官贵之星</div>
+              <div class="star-nature" data-i18n="starNature">紫微属阴土，北斗之主星，又名"帝座"，在数专司爵禄（官位与财富）。参照令东来《紫微斗数命理学》："紫微乃至尊之宿……性情多变，刚柔不济，故虽为人忠厚，而心地较小，且耳软心活。"紫微坐命者腰背多肉、长圆脸型，早年面黄白、老年红黄。若会左辅右弼，"不会左右则不能贵，多劳碌"；若会六煞，自我意识过强、凡事以自我为中心。</div>
+              <div class="star-advice" data-i18n="starAdvice">【建议】紫微命者宜寻求"左右"（得力助手/搭档），避免单打独斗；培养倾听习惯以补"耳软心活"之弊；适合走管理/领导/专业技术权威路线。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.2 十神格局 -->
+        <div class="deep-block">
+          <div class="deep-block-head">
+            <span class="deep-block-title" data-i18n="dsGods">十神格局</span>
+            <span class="deep-block-sub" data-i18n="dsGodsSub">日主为金 · 以五行生克推演十神 · 源自《中国古代算命术》子平体系</span>
+          </div>
+          <div class="gods">
+            <div class="god">
+              <div class="god-name" style="color:var(--el-fire)">正官<span class="god-el">火 · 克我者</span></div>
+              <div class="god-desc" data-i18n="gZhengguan">金以火为官。官星主规矩、原则与地位。火弱官星不显，主行事有原则却少逢显达；宜以专长立身、循序渐进，不可急功近利。</div>
+              <div class="god-source">— 子平八字·十神论</div>
+            </div>
+            <div class="god">
+              <div class="god-name" style="color:var(--el-wood)">正财<span class="god-el">木 · 我克者</span></div>
+              <div class="god-desc" data-i18n="gZhengcai">金以木为财。财星主实质财富与物质收获。木偏弱，财需经营积累，不宜投机冒进；正财稳进、积小成多为上策。</div>
+              <div class="god-source">— 子平八字·十神论</div>
+            </div>
+            <div class="god">
+              <div class="god-name" style="color:var(--el-water)">食神<span class="god-el">水 · 我生者</span></div>
+              <div class="god-desc" data-i18n="gShishen">金生水为食伤。食神主才华外露、口齿伶俐、表达谋略。水有根气，宜以才生财——写作、演讲、咨询、技术输出均为良途。</div>
+              <div class="god-source">— 子平八字·十神论</div>
+            </div>
+            <div class="god">
+              <div class="god-name" style="color:var(--el-earth)">正印<span class="god-el">土 · 生我者</span></div>
+              <div class="god-desc" data-i18n="gZhengyin">土生金为印。印星主学识根基、长辈庇荫与内心底气。土气中和，主有学历背景支撑、得师长提携，遇事不慌。</div>
+              <div class="god-source">— 子平八字·十神论</div>
+            </div>
+            <div class="god">
+              <div class="god-name" style="color:var(--el-metal)">比肩<span class="god-el">金 · 同我者</span></div>
+              <div class="god-desc" data-i18n="gBijian">金旺比肩重，主自我意志坚强、同辈助力强；然亦防过于执拗独断、不善借人之长。宜主动寻求合作者互补短板。</div>
+              <div class="god-source">— 子平八字·十神论</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.3 四化飞星 -->
+        <div class="deep-block">
+          <div class="deep-block-head">
+            <span class="deep-block-title" data-i18n="dsSihua">四化飞星</span>
+            <span class="deep-block-sub" data-i18n="dsSihuaSub">紫微斗数四化 · 禄权科忌之流转 · 参照《钦天四化》《令东来》</span>
+          </div>
+          <div class="sihua">
+            <div class="sihua-item">
+              <div class="sihua-header"><div class="sihua-dot" style="background:var(--el-wood)"></div><span class="sihua-name" style="color:var(--el-wood)">化禄</span></div>
+              <div class="sihua-palace" data-i18n="sihuaLuP">落 · 财帛宫 Wealth</div>
+              <div class="sihua-desc" data-i18n="sihuaLu">化禄主"增加财富缘分能量"。财帛宫化禄，财源有缘、进项顺畅、乐于其成。钱来找你，不用过分追逐。</div>
+              <div class="sihua-effect" data-i18n="sihuaLuFx">✦ 效应：正财偏财均有缘，但须防"来得容易去得快"——定存一部分收入作为"压舱石"。</div>
+            </div>
+            <div class="sihua-item">
+              <div class="sihua-header"><div class="sihua-dot" style="background:var(--el-metal)"></div><span class="sihua-name" style="color:var(--el-metal)">化权</span></div>
+              <div class="sihua-palace" data-i18n="sihuaQuanP">落 · 事业宫 Career</div>
+              <div class="sihua-desc" data-i18n="sihuaQuan">化权主"控制权力争夺"。事业宫化权，处事有主见、敢担当、能掌实务，适合带团队、管项目。</div>
+              <div class="sihua-effect" data-i18n="sihuaQuanFx">✦ 效应：职场话语权增强，但注意"权多压身"——学会授权给他人，勿事必躬亲致过劳。</div>
+            </div>
+            <div class="sihua-item">
+              <div class="sihua-header"><div class="sihua-dot" style="background:var(--el-water)"></div><span class="sihua-name" style="color:var(--el-water)">化科</span></div>
+              <div class="sihua-palace" data-i18n="sihuaKeP">落 · 交友宫 Friends</div>
+              <div class="sihua-desc" data-i18n="sihuaKe">化科主"科名名声被看见、学习能力、贵人"。交友宫化科，人缘有声望、得清贵之友，口碑自动传播。</div>
+              <div class="sihua-effect" data-i18n="sihuaKeFx">✦ 效应：社交场合容易被记住和推荐；适合参加行业会议、公开分享、建立个人品牌。</div>
+            </div>
+            <div class="sihua-item">
+              <div class="sihua-header"><div class="sihua-dot" style="background:var(--el-fire)"></div><span class="sihua-name" style="color:var(--el-fire)">化忌</span></div>
+              <div class="sihua-palace" data-i18n="sihuaJiP">落 · 田宅宫 Property</div>
+              <div class="sihua-desc" data-i18n="sihuaJi">化忌主"无缘孽缘欠缺亏欠不顺"。田宅宫化忌，家宅根基需用心经营，房产事务留余地，不宜冲动买卖。</div>
+              <div class="sihua-effect" data-i18n="sihuaJiFx">✦ 效应：租房/买房均须仔细审阅合同；家人关系多包容少计较；固定一个稳定的居所对运势有明显的"锚定"作用。</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.4 面相三停五官详批 -->
+        <div class="deep-block">
+          <div class="deep-block-head">
+            <span class="deep-block-title" data-i18n="dsFace">面相三停五官详批</span>
+            <span class="deep-block-sub" data-i18n="dsFaceSub">传统相学 · 三停配五行 · 五官辨吉凶</span>
+          </div>
+          <div class="face-read">
+            <div class="face-row">
+              <div class="face-part" data-i18n="faceUpper">上停</div>
+              <div class="face-text" data-i18n="faceUpperText">天庭饱满，发际整齐，额角开阔。上停主十五至三十岁少年运，亦主先天遗传与父母荫庇。<span class="face-detail" data-i18n="faceUpperDetail">【相学解析】额方而阔者，《麻衣神相》谓之"天庭饱满，少年富贵"。额头属火，主精神与理智；你额形方正微圆，火气适中，早年学业顺遂、得长辈赏识。唯两眉间略窄（印堂），偶有思虑过甚之象，建议多做户外运动疏解脑力疲劳。</span></div>
+            </div>
+            <div class="face-row">
+              <div class="face-part" data-i18n="faceMiddle">中停</div>
+              <div class="face-text" data-i18n="faceMiddleText">鼻梁挺直，山根有势，鼻头圆润有肉。中停主三十一至五十岁中年运，亦主事业与财富的巅峰期。<span class="face-detail" data-i18n="faceMiddleDetail">【相学解析】鼻为中停之主，属土，主财库与自我。鼻梁直而有势者主自立自强；鼻头有肉者主聚财。《神相全编》云："鼻如悬胆，财丰库实。"你的鼻相显示中年财运渐入佳境，三十五至四十五岁为事业爬坡期。眉棱清秀而不杂乱，主心思缜密、做事有条理。</span></div>
+            </div>
+            <div class="face-row">
+              <div class="face-part" data-i18n="faceLower">下停</div>
+              <div class="face-text" data-i18n="faceLowerText">地阁方圆，下巴匀称，腮骨有力。下停主五十一岁以后晚年运，亦主子女、配偶与归宿。<span class="face-detail" data-i18n="faceLowerDetail">【相学解析】地阁（下巴）属水，主智慧沉淀与晚福。地阁方圆者晚年安稳、有依靠；腮骨有力者意志坚定、不易被动摇。你的下停显示晚年有福可享，但水气略弱于金——暗示晚年宜早做财务规划（养老金、保险、被动收入），以免"金旺水弱"导致晚年操劳不减。</span></div>
+            </div>
+            <div class="face-row">
+              <div class="face-part" data-i18n="faceBrow">眉毛</div>
+              <div class="face-text" data-i18n="faceBrowText">眉形清朗有序，眉尾微微上扬，色泽润泽。<span class="face-detail" data-i18n="faceBrowDetail">眉主兄弟宫与情感表达方式。清朗之眉主思维清晰、不纠结；眉尾上扬者志向高远、不甘平庸。忌眉压眼（低垂遮瞳），你无此患，故人际交往中给人"可信赖、有条理"的第一印象。</span></div>
+            </div>
+            <div class="face-row">
+              <div class="face-part" data-i18n="faceEye">眼睛</div>
+              <div class="face-text" data-i18n="faceEyeText">眼神清澈专注，黑白分明，眼型偏长。<span class="face-detail" data-i18n="faceEyeDetail">眼为心之窗，主智慧与情感深度。长眼者思虑深远、善于分析；眼神专注者做事投入、不轻言放弃。你的眼相显示是一个"想得多、做得也多"的人——优点是周密严谨，缺点是容易过度思考导致行动迟缓。建议："想到就先动起来，边做边调"。</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3.5 长生十二神 · 当前生命阶段 -->
+        <div class="deep-block">
+          <div class="deep-block-head">
+            <span class="deep-block-title" data-i18n="dsLife">长生十二神 · 当前阶段</span>
+            <span class="deep-block-sub" data-i18n="dsLifeSub">五行生命周期 · 金长生在巳 · 你正处于「帝旺」转「衰」过渡期</span>
+          </div>
+          <div class="life-stage">
+            <div class="life-stage-top">
+              <div class="stage-ring"><span style="font-family:'Noto Serif SC',serif;font-weight:700;font-size:16px;color:var(--gold);">帝旺</span></div>
+              <div class="stage-info">
+                <div class="stage-name" data-i18n="stageName">帝旺 → 衰 transition</div>
+                <div class="stage-meaning" data-i18n="stageMeaning">帝旺：生命力最旺盛、成就欲最强、社会活跃度最高｜衰：盛极始敛、宜收不宜放</div>
+              </div>
+            </div>
+            <div class="stage-desc" data-i18n="stageDesc">你目前处于人生的"帝旺"后期向"衰"过渡的阶段——这是一个人能力、资源、人脉都达到高峰的时期，同时也是最容易"过度扩张"的时期。参照《紫微斗数集成全书》长生十二神："帝旺者，事物发展到极点……衰者，盛极而衰之兆。"此阶段的策略关键词是：**巩固成果、适度收敛、为下一轮蓄力**。</div>
+            <div class="stage-tip" data-i18n="stageTip">📌 建议：不要在此阶段开启过多新战线；将已有优势转化为"可被动收益"的资产（知识产权、股权、品牌）；关注健康预警信号。</div>
+          </div>
+        </div>
+
+      </div><!-- /.deep-section -->
+
+      <!-- 四、综合论断 -->
+      <div class="assess-card" id="assessCard">
+        <div class="assess-quote" data-i18n="assessQuote">"死生有命，富贵在天。" ——《论语·颜渊》引夏人之言</div>
+        <div class="assess-body" data-i18n="assessBody">观你面相，天庭饱满、地阁方圆、鼻梁有势，金气偏旺而主果断坚毅、做事有始有终。紫微（阴土·帝座）坐命，为人忠厚而心地略窄、耳软心活——既是你最大的优点（好说话、善接纳），也是需要警惕之处（易受煽动、难辨是非）。<br/><br/>五行层面，金旺（92）为全局主导力量，赋予你极强的执行力与决断力；然木（48）、火（38）偏弱——意味着"开创力"与"表达热情"不足，容易陷入"想得多、做得保守"的模式。水（55）中等、土（61）尚可，说明根基与应变力有保障。<br/><br/>四化飞星层面，化禄在财（有钱来）、化权在业（有事做）、化科在交（有人帮）、化忌在家（家需顾）——整体配置相当不错！唯一需要刻意经营的领域是"田宅宫"（家庭/房产），此处化忌提醒你：<strong>不要因为忙于外部打拼而忽略了对家人的陪伴和对居住环境的稳定投入</strong>。<br/><br/>命理示人以趋势，非定数——《系辞传》云"穷则变，变则通，通则久"。真正改运的，是你日复一日的修为与选择。你的命盘底色是"金旺紫微"——一个有能力、有地位、有财源的格局；如何把这个"好底子"活成"好人生"，钥匙在你自己手里。</div>
+        <div class="advice">
+          <div class="advice-title" data-i18n="adviceTitle">趋吉避凶 · 六则</div>
+          <p data-i18n="a1">① 补火调候：金旺火弱，宜多涉明火向阳之事——运动出汗、公开演讲、短视频出镜、参与社群活动，以平衡金旺之"刚"与"冷"。</p>
+          <p data-i18n="a2">② 补木生发：木弱则开创力不足，建议每年启动一件"从零到一"的新项目（学习新技能、开辟新副业、结识新圈层），激活木的"生发"之气。</p>
+          <p data-i18n="a3">③ 方位宜忌：金命者利西方、西北发展（金融、科技、制造业均为金性行业）；南方火地易耗神，重大决策避开巳午月（农历四、五月）冲动行事。</p>
+          <p data-i18n="a4">④ 人际修行：紫微"耳软心活"+火弱礼数不足=容易被人忽悠。养成"三思后应"的习惯：凡涉及金钱/合作/承诺的事，至少隔夜再答复。</p>
+          <p data-i18n="a5">⑤ 家宅锚定：田宅宫化忌→选一个城市/区域长期扎根，避免频繁搬家；每年做一次家居"断舍离"，保持环境整洁通气，可显著改善整体气场。</p>
+          <p data-i18n="a6">⑥ 健康关注：金旺火弱者，呼吸系统（金）强但心血管系统（火）偏弱。定期检查血压与心率；少熬夜（熬夜伤火），多晒太阳（补阳气）。</p>
+        </div>
+        <!-- 参考典籍 -->
+        <div class="refs" data-i18n="refs">参考典籍：《紫微斗数命理学》（令东来）、《紫微斗数精成》（大德山人）、《紫微斗数南北派断诀》（朱云山）、《钦天四化紫微斗数命理学》（许铨仁）、《紫微斗数初级讲义》（天翼术数）、《陆斌兆紫微斗数讲义评注》、《中国古代算命术》（洪丕谟/姜玉珍）</div>
+      </div>
+
+      <div class="footer-cta">
+        <button class="btn-primary" id="exportBtn" data-i18n="exportPdf">导出 PDF</button>
+        <button class="btn-ghost" id="reshuffleBtn" data-i18n="reshuffle">换一卦</button>
+        <button class="btn-ghost" id="rephotoBtn" data-i18n="rephoto">重新拍照</button>
+      </div>
+    </div>
+
+    <!-- 中华文化结语 -->
+    <div class="cultural-note">
+      <div class="cn" data-i18n="culturalCN">上述为中华传统文化的趣味测算，融合周易象数、紫微斗数、子平五行与相学多重体系推演而成。命运掌握在自己手中，娱乐仅供参考。</div>
+      <div class="en" data-i18n="culturalEN">The above is a playful reading rooted in Chinese traditional culture, integrating I Ching numerology, Ziwei Dou Shu (Purple Star Astrology), Five-Element theory, and physiognomy. Your destiny rests in your own hands — for entertainment and self-reflection only.</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  /* ===== 双语字典（完整版） ===== */
+  const I18N = {
+    zh:{
+      navHistory:'历史命盘',eyebrow:'东方命理 · 以相观运',
+      h1:'一张面相，<br/>读懂你的五行气运',
+      subcopy:'上传一张清晰的正脸照片，结合《周易》象数、传统相学与紫微斗数十二宫，为你推演财运、事业、家庭、人际与仕途五大维度的综合气运。结果以传统文化视角趣味呈现，理性看待，仅供参考。',
+      start:'开始拍照算命',upload:'上传照片',
+      homeDisc:'本测算为传统文化趣味推演，非科学论断，结果仅供娱乐与自省参考。',
+      slotHint:'正脸对准取景框',capture:'拍照',captureHint:'正脸 · 光线充足 · 免冠',
+      camFail:'未获取到摄像头，请改用「上传照片」',cancel:'取消',
+      loadTitle:'正在推演你的命格……',
+      loadSub:'结合《周易》象数、相学与紫微斗数十二宫，正在为你生成专属研判。',
+      step1:'采集面相',step2:'推算五行',step3:'排布十神',step4:'四化总断',
+      progLabel:'测算进度',save:'保存命盘',share:'分享',
+      facePh:'面相',headEye:'命盘推演完成',
+      headTitle:'金命 · 乾造 · 性情刚毅而内藏仁心',
+      chip1:'金旺',chip2:'中正平和',chip3:'宜西忌南',
+      secFive:'五行平衡',
+      sysNote:'推演体系：易学五术（命·相）· 紫微斗数十四正曜 · 四化飞星 · 五行生克',
+      elMetal:'金',elWood:'木',elWater:'水',elFire:'火',elEarth:'土',
+      dimWealth:'财运',dimCareer:'事业',dimFamily:'家庭',dimSocial:'人际',dimOffice:'仕途',
+      dimSubWealth:'财帛宫 · Wealth Palace',dimSubCareer:'官禄宫 · Career Palace',
+      dimSubFamily:'田宅宫 · Property Palace',dimSubSocial:'交友宫 · Friends Palace',dimSubOffice:'官禄宫 · Merit Palace',
+      dWealth:'财帛宫主财源盈虚与对待金钱的态度。金旺者财库丰实，天生有聚财之能；然金多则刚，理财宜稳不宜躁。',
+      dWealthDeep:'【深度】财帛宫化禄入，主财源顺畅、不缺钱花，但需防"财来财去"——宜以不动产或长期投资锁住财气。参照《钦天四化》：化禄入财帛宫→善于赚钱、享受物质；配合武曲（阴金·财星）同宫，更主正财稳健。忌寅午戌月冲动太岁，大额支出易增。',
+      dCareer:'官禄宫即事业宫，主工作状态、职业声望与社会地位。木主生发进取，守正持恒自有贵人相扶。',
+      dCareerDeep:'【深度】事业宫化权入，主掌控力强、敢担当，适合管理岗与技术骨干路线。参照令东来《紫微斗数命理学》：紫微坐官禄宫者"专司爵禄……在数专司爵禄"，若会左辅右弼，"不会左右则不能贵，多劳碌"——建议主动寻求团队协作，避免单打独斗耗损精力。天机（阴木·智星）拱照，主谋略出众，宜往咨询/策划/技术专家方向发展。',
+      dFamily:'田宅宫主家宅安稳、祖产根基与不动产运势。水主滋养绵长，温言软语可保家宅安宁。',
+      dFamilyDeep:'【深度】田宅宫化忌入，主家宅需用心经营、不宜频繁搬迁，父母关系偶有摩擦。参照朱云山《南北派断诀》：天府（阳土）坐田宅宫"天府天相三合拱照，不富即贵"，若逢禄存同宫更利置产。水弱则田宅根基稍薄，建议以"稳定居住环境"为优先考量，避免因工作变动频繁搬家而耗散地气。',
+      dSocial:'交友宫主人缘广狭、朋友下属之助力及合作伙伴的契合度。火主礼交明快，张弛有度人缘愈广。',
+      dSocialDeep:'【深度】交友宫化科入，主朋友有名声、得清贵之友，口碑相扶。参照《钦天四化》：化科入交友宫→朋友、下属有助力，利于团队协作与商务人脉拓展。火旺则人缘热络但易"交浅言深"，建议在社交中保持适度距离感，尤其涉及金钱往来时务必先立契约。巨门（阴土水·暗星）冲照时，防"口舌是非"——少议他人长短。',
+      dOffice:'官禄宫主社会地位、职权范围与官方认可度。紫微为"官贵之星·官禄主"，土主承载厚积薄发。',
+      dOfficeDeep:'【深度】参照许铨仁《钦天四化紫微斗数》：化权入官禄宫→工作狂、工作能力强、喜爱掌权。土旺者稳重踏实，但官星得分中等（70），说明"有潜力未全发"——宜在专业领域深耕积累资历，而非急于求成谋求跃升。七杀（阳金火）若照命宫，主"掌大权，能享受福德"（朱云山语），但亦需防"过于独断"。建议：考取专业资格认证、参与行业协会、积累行业口碑，为日后官星发力铺路。',
+      assessQuote:'"死生有命，富贵在天。" ——《论语·颜渊》引夏人之言',
+      assessBody:'观你面相，天庭饱满、地阁方圆、鼻梁有势，金气偏旺而主果断坚毅、做事有始有终。紫微（阴土·帝座）坐命，为人忠厚而心地略窄、耳软心活——既是你最大的优点（好说话、善接纳），也是需要警惕之处（易受煽动、难辨是非）。<br/><br/>五行层面，金旺（92）为全局主导力量，赋予你极强的执行力与决断力；然木（48）、火（38）偏弱——意味着"开创力"与"表达热情"不足，容易陷入"想得多、做得保守"的模式。水（55）中等、土（61）尚可，说明根基与应变力有保障。<br/><br/>四化飞星层面，化禄在财（有钱来）、化权在业（有事做）、化科在交（有人帮）、化忌在家（家需顾）——整体配置相当不错！唯一需要刻意经营的领域是"田宅宫"（家庭/房产），此处化忌提醒你：<strong>不要因为忙于外部打拼而忽略了对家人的陪伴和对居住环境的稳定投入</strong>。<br/><br/>命理示人以趋势，非定数——《系辞传》云"穷则变，变则通，通则久"。真正改运的，是你日复一日的修为与选择。你的命盘底色是"金旺紫微"——一个有能力、有地位、有财源的格局；如何把这个"好底子"活成"好人生"，钥匙在你自己手里。',
+      adviceTitle:'趋吉避凶 · 六则',
+      a1:'① 补火调候：金旺火弱，宜多涉明火向阳之事——运动出汗、公开演讲、短视频出镜、参与社群活动，以平衡金旺之"刚"与"冷"。',
+      a2:'② 补木生发：木弱则开创力不足，建议每年启动一件"从零到一"的新项目（学习新技能、开辟新副业、结识新圈层），激活木的"生发"之气。',
+      a3:'③ 方位宜忌：金命者利西方、西北发展（金融、科技、制造业均为金性行业）；南方火地易耗神，重大决策避开巳午月（农历四、五月）冲动行事。',
+      a4:'④ 人际修行：紫微"耳软心活"+火弱礼数不足=容易被人忽悠。养成"三思后应"的习惯：凡涉及金钱/合作/承诺的事，至少隔夜再答复。',
+      a5:'⑤ 家宅锚定：田宅宫化忌→选一个城市/区域长期扎根，避免频繁搬家；每年做一次家居"断舍离"，保持环境整洁通气，可显著改善整体气场。',
+      a6:'⑥ 健康关注：金旺火弱者，呼吸系统（金）强但心血管系统（火）偏弱。定期检查血压与心率；少熬夜（熬夜伤火），多晒太阳（补阳气）。',
+      rephoto:'重新拍照',
+      culturalCN:'上述为中华传统文化的趣味测算，融合周易象数、紫微斗数、子平五行与相学多重体系推演而成。命运掌握在自己手中，娱乐仅供参考。',
+      culturalEN:'The above is a playful reading rooted in Chinese traditional culture, integrating I Ching numerology, Ziwei Dou Shu (Purple Star Astrology), Five-Element theory, and physiognomy. Your destiny rests in your own hands — for entertainment and self-reflection only.',
+      /* 深度板块 */
+      dsStar:'紫微主星定位',dsStarSub:'十四正曜之一 · 命宫主星决定核心性格与人生走向',
+      starName:'紫微星 · 帝座',starMeta:'阴土 · 北斗主星 · 专司爵禄 · 官贵之星',
+      starNature:'紫微属阴土，北斗之主星，又名"帝座"，在数专司爵禄（官位与财富）。参照令东来《紫微斗数命理学》："紫微乃至尊之宿……性情多变，刚柔不济，故虽为人忠厚，而心地较小，且耳软心活。"紫微坐命者腰背多肉、长圆脸型，早年面黄白、老年红黄。若会左辅右弼，"不会左右则不能贵，多劳碌"；若会六煞，自我意识过强、凡事以自我为中心。',
+      starAdvice:'【建议】紫微命者宜寻求"左右"（得力助手/搭档），避免单打独斗；培养倾听习惯以补"耳软心活"之弊；适合走管理/领导/专业技术权威路线。',
+      dsGods:'十神格局',dsGodsSub:'日主为金 · 以五行生克推演十神 · 源自《中国古代算命术》子平体系',
+      gZhengguan:'金以火为官。官星主规矩、原则与地位。火弱官星不显，主行事有原则却少逢显达；宜以专长立身、循序渐进，不可急功近利。',
+      gZhengcai:'金以木为财。财星主实质财富与物质收获。木偏弱，财需经营积累，不宜投机冒进；正财稳进、积小成多为上策。',
+      gShishen:'金生水为食伤。食神主才华外露、口齿伶俐、表达谋略。水有根气，宜以才生财——写作、演讲、咨询、技术输出均为良途。',
+      gZhengyin:'土生金为印。印星主学识根基、长辈庇荫与内心底气。土气中和，主有学历背景支撑、得师长提携，遇事不慌。',
+      gBijian:'金旺比肩重，主自我意志坚强、同辈助力强；然亦防过于执拗独断、不善借人之长。宜主动寻求合作者互补短板。',
+      dsSihua:'四化飞星',dsSihuaSub:'紫微斗数四化 · 禄权科忌之流转 · 参照《钦天四化》《令东来》',
+      sihuaLuP:'落 · 财帛宫 Wealth',
+      sihuaLu:'化禄主"增加财富缘分能量"。财帛宫化禄，财源有缘、进项顺畅、乐于其成。钱来找你，不用过分追逐。',
+      sihuaLuFx:'✦ 效应：正财偏财均有缘，但须防"来得容易去得快"——定存一部分收入作为"压舱石"。',
+      sihuaQuanP:'落 · 事业宫 Career',
+      sihuaQuan:'化权主"控制权力争夺"。事业宫化权，处事有主见、敢担当、能掌实务，适合带团队、管项目。',
+      sihuaQuanFx:'✦ 效应：职场话语权增强，但注意"权多压身"——学会授权给他人，勿事必躬亲致过劳。',
+      sihuaKeP:'落 · 交友宫 Friends',
+      sihuaKe:'化科主"科名名声被看见、学习能力、贵人"。交友宫化科，人缘有声望、得清贵之友，口碑自动传播。',
+      sihuaKeFx:'✦ 效应：社交场合容易被记住和推荐；适合参加行业会议、公开分享、建立个人品牌。',
+      sihuaJiP:'落 · 田宅宫 Property',
+      sihuaJi:'化忌主"无缘孽缘欠缺亏欠不顺"。田宅宫化忌，家宅根基需用心经营，房产事务留余地，不宜冲动买卖。',
+      sihuaJiFx:'✦ 效应：租房/买房均须仔细审阅合同；家人关系多包容少计较；固定一个稳定的居所对运势有明显的"锚定"作用。',
+      dsFace:'面相三停五官详批',dsFaceSub:'传统相学 · 三停配五行 · 五官辨吉凶',
+      faceUpper:'上停 · 天庭',faceUpperText:'天庭饱满，发际整齐，额角开阔。上停主十五至三十岁少年运，亦主先天遗传与父母荫庇。',
+      faceUpperDetail:'【相学解析】额方而阔者，《麻衣神相》谓之"天庭饱满，少年富贵"。额头属火，主精神与理智；你额形方正微圆，火气适中，早年学业顺遂、得长辈赏识。唯两眉间略窄（印堂），偶有思虑过甚之象，建议多做户外运动疏解脑力疲劳。',
+      faceMiddle:'中停 · 鼻准',faceMiddleText:'鼻梁挺直，山根有势，鼻头圆润有肉。中停主三十一至五十岁中年运，亦主事业与财富的巅峰期。',
+      faceMiddleDetail:'【相学解析】鼻为中停之主，属土，主财库与自我。鼻梁直而有势者主自立自强；鼻头有肉者主聚财。《神相全编》云："鼻如悬胆，财丰库实。"你的鼻相显示中年财运渐入佳境，三十五至四十五岁为事业爬坡期。眉棱清秀而不杂乱，主心思缜密、做事有条理。',
+      faceLower:'下停 · 地阁',faceLowerText:'地阁方圆，下巴匀称，腮骨有力。下停主五十一岁以后晚年运，亦主子女、配偶与归宿。',
+      faceLowerDetail:'【相学解析】地阁（下巴）属水，主智慧沉淀与晚福。地阁方圆者晚年安稳、有依靠；腮骨有力者意志坚定、不易被动摇。你的下停显示晚年有福可享，但水气略弱于金——暗示晚年宜早做财务规划（养老金、保险、被动收入），以免"金旺水弱"导致晚年操劳不减。',
+      faceBrow:'眉毛',faceBrowText:'眉形清朗有序，眉尾微微上扬，色泽润泽。',
+      faceBrowDetail:'眉主兄弟宫与情感表达方式。清朗之眉主思维清晰、不纠结；眉尾上扬者志向高远、不甘平庸。忌眉压眼（低垂遮瞳），你无此患，故人际交往中给人"可信赖、有条理"的第一印象。',
+      faceEye:'眼睛',faceEyeText:'眼神清澈专注，黑白分明，眼型偏长。',
+      faceEyeDetail:'眼为心之窗，主智慧与情感深度。长眼者思虑深远、善于分析；眼神专注者做事投入、不轻言放弃。你的眼相显示是一个"想得多、做得也多"的人——优点是周密严谨，缺点是容易过度思考导致行动迟缓。建议："想到就先动起来，边做边调"。',
+      dsLife:'长生十二神 · 当前阶段',dsLifeSub:'五行生命周期 · 金长生在巳 · 你正处于「帝旺」转「衰」过渡期',
+      stageName:'帝旺 → 衰 transition',stageMeaning:'帝旺：生命力最旺盛、成就欲最强、社会活跃度最高｜衰：盛极始敛、宜收不宜放',
+      stageDesc:'你目前处于人生的"帝旺"后期向"衰"过渡的阶段——这是一个人能力、资源、人脉都达到高峰的时期，同时也是最容易"过度扩张"的时期。参照《紫微斗数集成全书》长生十二神："帝旺者，事物发展到极点……衰者，盛极而衰之兆。"此阶段的策略关键词是：巩固成果、适度收敛、为下一轮蓄力。',
+      stageTip:'📌 建议：不要在此阶段开启过多新战线；将已有优势转化为"可被动收益"的资产（知识产权、股权、品牌）；关注健康预警信号。',
+      refs:'参考典籍：《紫微斗数命理学》（令东来）、《紫微斗数精成》（大德山人）、《紫微斗数南北派断诀》（朱云山）、《钦天四化紫微斗数命理学》（许铨仁）、《紫微斗数初级讲义》（天翼术数）、《陆斌兆紫微斗数讲义评注》、《中国古代算命术》（洪丕谟/姜玉珍）'
+    },
+    en:{
+      navHistory:'History',eyebrow:'Eastern Metaphysics · Read Fate by Face',
+      h1:'One Face,<br/>Your Five-Element Destiny Revealed',
+      subcopy:'Upload a clear front-face photo. Grounded in the I Ching numerology, physiognomy (相), and the Twelve Palaces of Ziwei Dou Shu (Purple Star Astrology), we interpret your fortune across five dimensions — wealth, career, family, relationships, and official prospects.',
+      start:'Start Fortune Reading',upload:'Upload Photo',
+      homeDisc:'This is a playful cultural reading, not a scientific claim — for entertainment and self-reflection only.',
+      slotHint:'Align your face to the frame',capture:'Capture',captureHint:'Front face · Good light · No hat',
+      camFail:'No camera detected — please use "Upload Photo" instead.',cancel:'Cancel',
+      loadTitle:'Reading your destiny…',
+      loadSub:'Grounded in the I Ching, physiognomy and the Twelve Palaces of Ziwei Dou Shu, generating your personal interpretation.',
+      step1:'Collect Face',step2:'Deduce Elements',step3:'Arrange Ten Gods',step4:'Four Transformations',
+      progLabel:'Reading progress',save:'Save Reading',share:'Share',
+      facePh:'Face',headEye:'Reading Complete',
+      headTitle:'Metal Fate · Qian Chart · Firm yet Kind-hearted',
+      chip1:'Metal Strong',chip2:'Balanced',chip3:'West Favorable',
+      secFive:'Five Elements Balance',
+      sysNote:'System: Five Arts of Metaphysics (Destiny · Physiognomy) · 14 Major Stars of Ziwei Dou Shu · Four Transformations · Five-Element Interaction',
+      elMetal:'Metal',elWood:'Wood',elWater:'Water',elFire:'Fire',elEarth:'Earth',
+      dimWealth:'Wealth',dimCareer:'Career',dimFamily:'Family',dimSocial:'Relationships',dimOffice:'Official Path',
+      dimSubWealth:'Wealth Palace',dimSubCareer:'Career Palace',dimSubFamily:'Property Palace',dimSubSocial:'Friends Palace',dimSubOffice:'Merit Palace',
+      dWealth:'The Wealth Palace governs income and attitude toward money. Metal-strong builds a solid treasury — favor steady management over speculative risk.',
+      dWealthDeep:'[Deep] Lu (化禄) entering Wealth Palace means money flows easily but can flow out just as fast — lock wealth into long-term assets. Per Xu Quanren\'s Four Transformations: Lu in Wealth = good at earning, enjoys material comfort; paired with Wuqu (Metal wealth star), even more steady. Avoid impulsive spending in Tiger-Monkey-Dog months.',
+      dCareer:'The Career Palace governs work status, reputation, and social standing. Wood feeds growth — stay upright and persistent; noble patrons will come.',
+      dCareerDeep:'[Deep] Quan (化权) in Career Palace means strong control and decisiveness — suited for management or technical lead roles. Per Ling Donglai\'s Ziwei Dou Shu: "Ziwei in Career specializes in rank and salary." Without ZuoFu/YouBi assistants, "cannot achieve nobility alone, much labor." Seek collaboration; Tianji (Wood wisdom star) shining upon you favors consulting/planning/expert tracks.',
+      dFamily:'The Property Palace governs home stability, ancestral roots, and real estate. Water nurtures — gentle words keep household peace.',
+      dFamilyDeep:'[Deep] Ji (化忌) in Property Palace means home needs intentional care; avoid frequent moves. Per Zhu Yunshan\'s Southern School: Tifu (Earth) in Property + Luxun together = "rich or noble at least." Weak Water suggests prioritize stable residence over job-driven relocation.',
+      dSocial:'The Friends Palace governs social reach, ally support, and partnership fit. Fire rules courtesy — balanced openness widens your circle.',
+      dSocialDeep:'[Deep] Ke (化科) in Friends Palace means friends bring reputation and quality connections. Per Four Transformations: Ke in Friends = allies help, great for networking. Strong Fire risks "oversharing too soon" — maintain distance in money matters; Jumen (dark star) clashing warns against gossip.',
+      dOffice:'The Merit Palace governs social status, authority scope, and official recognition. Ziwei is the "star of rank"; Earth bears weight — accumulate quietly.',
+      dOfficeDeep:'[Deep] Per Xu Quanren: Quan in Merit = workaholic, strong capability, loves authority. Earth-steady but score 70 = "potential not fully released" — deepen expertise rather than rush promotion. Qisha (Metal-Fire) shining on Destiny means "holds great power, enjoys blessings" (Zhu Yunshan) but guard against autocracy. Get certifications, join industry associations.',
+      assessQuote:'"Death and life have their fate; wealth and honor rest with Heaven." — Zixia (disciple of Confucius)',
+      assessBody:'Your face shows a full forehead, square chin, and strong nose bridge — Metal energy runs strong, giving decisiveness and perseverance. Ziwei (Yin Earth · Throne Star) in Destiny makes you loyal-hearted yet narrow-minded, easily swayed — both your greatest strength (open to influence) and your vulnerability (hard to distinguish right from wrong).<br/><br/>Five Elements: Metal dominant (92) gives powerful execution; Wood (48) and Fire (38) are weak — meaning "initiative" and "expressive passion" are underdeveloped, prone to "overthink, underact." Water (55) moderate, Earth (61) adequate.<br/><br/>Four Transformations: Lu in Wealth (money comes), Quan in Career (work matters), Ke in Friends (people help), Ji in Property (home needs care) — overall excellent! The one area requiring conscious effort is the Property Palace (family/home): <strong>don\'t neglect family time and stable living environment while chasing external success</strong>.<br/><br/>Metaphysics reveals trends, not destiny — "When misfortune reaches its limit, fortune appears; once changed, it flows through." (I Ching). Your chart\'s base is "Metal-strong Ziwei" — capable, ranked, and wealthy. How you live this "good foundation" into a "good life" is up to you.',
+      adviceTitle:'Six Tips for Luck',
+      a1:'① Tonify Fire: engage in bright outward activities — exercise, public speaking, video content, community events — to balance Metal\'s rigidity and coolness.',
+      a2:'② Nourish Wood: weak Wood = weak initiative. Launch one "zero-to-one" new project each year (new skill, side business, new circle) to activate Wood\'s generative energy.',
+      a3:'③ Direction: Metal benefits West/Northwest (finance, tech, manufacturing are Metal industries); South (Fire) drains energy. Avoid impulsive decisions in Snake-Horse months (lunar 4th–5th month).',
+      a4:'④ Social discipline: Ziwei\'s "soft-eared" + weak Fire courtesy = easily influenced. Cultivate "think three times before responding": for any money/collaboration/commitment, sleep on it before replying.',
+      a5:'⑤ Home anchoring: Ji in Property → pick one city/area to root long-term; annual decluttering keeps Qi flowing smoothly.',
+      a6:'⑥ Health: Metal-strong/Fire-weak = strong respiratory (Metal) but weaker cardiovascular (Fire). Check BP/heart rate regularly; less late nights (late nights damage Fire), more sunlight (boosts Yang).',
+      rephoto:'Retake Photo',
+      culturalCN:'上述为中华传统文化的趣味测算，融合周易象数、紫微斗数、子平五行与相学多重体系推演而成。命运掌握在自己手中，娱乐仅供参考。',
+      culturalEN:'The above is a playful reading rooted in Chinese traditional culture, integrating I Ching numerology, Ziwei Dou Shu, Five-Element theory, and physiognomy. Your destiny rests in your own hands — for entertainment and self-reflection only.',
+      dsStar:'Major Star Profile',dsStarSub:'One of 14 Major Stars · Destiny Palace star defines core personality & life trajectory',
+      starName:'Ziwei (Purple Micro) · The Throne',starMeta:'Yin Earth · North Dipper Lord · Specializes in Rank & Salary · Star of Nobility',
+      starNature:'Ziwei belongs to Yin Earth, lord of the North Dipper stars, aka "Throne" — specializing in rank (official position) and wealth. Per Ling Donglai: "Ziwei is the supreme dwelling… temperament variable, firm yet yielding. Though loyal-hearted, the mind is somewhat narrow, ears soft and heart pliable." Ziwei in Destiny: robust torso, oblong-round face, yellow-white in youth turning red-yellow in age. Without assistant stars, "cannot achieve nobility alone, much labor"; with malevolent stars, ego-centric.',
+      starAdvice:'[Advice] Ziwei Destiny people should seek "assistants" (capable partners), avoid solo operations; cultivate listening to offset "soft-eared"; suited for management/leadership/professional authority tracks.',
+      dsGods:'Ten Gods Pattern',dsGodsSub:'Day Master is Metal · Ten Gods derived from Five-Element generation/constraint · From Zi Ping (Four Pillars) system',
+      gZhengguan:'Metal takes Fire as Officer (正官). Officer represents principles, rules, and status. Weak Fire = principled but few visible achievements; build on expertise, progress gradually.',
+      gZhengcai:'Metal controls Wood as Wealth (正财). Wealth represents tangible gains. Weak Wood = wealth requires cultivation, no speculation; steady accumulation wins.',
+      gShishen:'Metal generates Water as Output (食神). Output represents talent expression, eloquence, and strategy. Water has root — monetize through writing, speaking, consulting, tech output.',
+      gZhengyin:'Earth generates Metal as Resource (正印). Resource represents knowledge foundation, elder protection, and inner confidence. Balanced Earth = academic backing, mentor support, calm under pressure.',
+      gBijian:'Strong Metal = strong Shoulder (比肩) = strong self-will, peer support; risk: stubbornness, poor delegation. Actively seek complementary partners.',
+      dsSihua:'Four Transformations Flying Stars',dsSihuaSub:'Ziwei Dou Shu Four Transformations · Lu-Quan-Ke-Ji flow · Referencing Xu Quanren & Ling Donglai',
+      sihuaLuP:'Falls in · Wealth Palace',sihuaLu:'Lu (化禄) increases wealth-affinity energy. In Wealth Palace: money comes easily, enjoy the flow — no need to chase.',
+      sihuaLuFx:'✦ Effect: both regular and windfall income possible, but guard "easy come easy go" — lock a portion into long-term assets as ballast.',
+      sihuaQuanP:'Falls in · Career Palace',sihuaQuan:'Quan (化权) controls power struggles. In Career: decisive, courageous, capable of managing projects and teams.',
+      sihuaQuanFx:'✦ Effect: workplace voice strengthened, but beware "authority burden" — learn to delegate, don\'t do-it-all yourself into burnout.',
+      sihuaKeP:'Falls in · Friends Palace',sihuaKe:'Ke (化科) brings visibility, learning ability, and patrons. In Friends: friends have reputation, quality connections spread word-of-mouth.',
+      sihuaKeFx:'✦ Effect: easily remembered and recommended in social settings; attend industry conferences, public sharing, build personal brand.',
+      sihuaJiP:'Falls in · Property Palace',sihuaJi:'Ji (化忌) means karmic debt, lack, obstacles. In Property: home base needs care, real estate decisions need margin, no impulse buys.',
+      sihuaJiFx:'✦ Effect: rent/buy contracts need careful review; family relations need tolerance; a fixed stable residence has a noticeable "anchoring" effect on overall fortune.',
+      dsFace:'Physiognomy Detail · Three Stops & Five Features',dsFaceSub:'Traditional Face Reading · Three Stops matched to Five Elements · Features reveal fortune',
+      faceUpper:'Upper Stop · Forehead',faceUpperText:'Full forehead, neat hairline, broad temples. Upper stop governs ages 15–30 (youth fortune), also heredity and parental blessing.',
+      faceUpperDetail:'[Analysis] Broad square forehead = "full forehead, wealthy youth" (Ma Yi Shen Xiang). Forehead belongs to Fire, governing spirit and reason. Your forehead shape is slightly round-square, moderate Fire — smooth early studies, elders appreciate you. Only slight narrowness between brows (Yin Tang) suggests occasional overthinking; recommend outdoor exercise to release mental fatigue.',
+      faceMiddle:'Middle Stop · Nose',faceMiddleText:'Straight nose bridge, strong root, rounded fleshy tip. Middle stop governs ages 31–50 (mid-life peak), also career and wealth prime.',
+      faceMiddleDetail:'[Analysis] Nose is the lord of Middle Stop, belongs to Earth, governing treasury and self. Straight strong nose = self-reliance; fleshy tip = wealth accumulation. "Nose like hanging gallbladder, treasury full" (Shen Xiang Quan Bian). Your nose shows mid-life wealth improving steadily, ages 35–45 career climb. Clean orderly brow ridges = meticulous thinking, organized action.',
+      faceLower:'Lower Stop · Chin',faceLowerText:'Square chin, even jaw, strong cheekbones. Lower stop governs age 51+ (late-life fortune), also children, spouse, and final destination.',
+      faceLowerDetail:'[Analysis] Di Ge (chin) belongs to Water, governing wisdom sedimentation and late blessings. Square chin = stable late years, support available; strong cheekbones = firm will, hard to sway. Your lower stop shows late-life blessings, but Water slightly weaker than Metal — plan finances early (pension, insurance, passive income) to avoid "Metal-strong Water-weak" = continued late-life exertion.',
+      faceBrow:'Eyebrows',faceBrowText:'Clear orderly brows, tail gently upward, glossy color.',
+      faceBrowDetail:'Brows govern Brothers Palace and emotional expression style. Clear brows = clear thinking, no entanglement; upward-tail = high aspirations, never mediocre. Avoid "brows pressing eyes" (low hanging covering pupils) — you don\'t have this, so first impression is "trustworthy, organized."',
+      faceEye:'Eyes',faceEyeText:'Clear focused gaze, distinct black-white whites, elongated eye shape.',
+      faceEyeDetail:'Eyes are the window of the heart, governing wisdom and emotional depth. Long eyes = deep thinking, strong analysis; focused gaze = committed action, doesn\'t give up easily. Your eye profile shows a "thinks much, does much" person — pro: thorough rigorous; con: overthinking delays action. Advice: "start moving as soon as you think of it, adjust along the way."',
+      dsLife:'12 Life Stages · Current Phase',dsLifeSub:'Five Element lifecycle · Metal begins life at Si (Snake) · You are in "Peak Prosperity (帝旺) → Decline (衰)" transition',
+      stageName:'Di Wang → Shuai transition',stageMeaning:'Di Wang: peak vitality, maximum ambition, highest social activity | Shuai: peak begins receding, consolidate, don\'t expand',
+      stageDesc:'You are transitioning from late "Di Wang" (peak prosperity) toward "Shuai" (decline) — when ability, resources, and network all reach their zenith, but also the easiest period for "over-expansion." Per Ziwei Dou Shu Complete Book: "Di Wang = things develop to extreme… Shuai = peak begins to decline." Strategy keywords: consolidate achievements, moderate restraint, build reserves for next cycle.',
+      stageTip:'📌 Tip: Don\'t launch too many new fronts now; convert existing advantages into passive-income assets (IP, equity, brand); watch health warning signs.',
+      refs:'References: "Ziwei Dou Shu Ming Li Xue" (Ling Donglai), "Ziwei Dou Shu Jing Cheng" (Da De Shan Ren), "Nan Bei Pai Duan Jue" ( Zhu Yunshan), "Qin Tian Si Hua" (Xu Quanren), "Ziwei Dou Shu Primary Lectures" (Tian Yi Center), "Lu Bin Zuo Lecture Notes", "Ancient Chinese Fortune-Telling Arts" (Hong Pi Mo / Jiang Yu Zhen)'
+    }
+  };
+
+  let currentLang = 'zh';
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.lang = (lang === 'zh') ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N[lang][key] != null) el.innerHTML = I18N[lang][key];
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(b => { b.textContent = (lang === 'zh') ? 'EN' : '中'; });
+    const pl = $('progressLabel');
+    if (pl && pl.dataset.shown === '1'){ pl.textContent = I18N[lang].progLabel + ' ' + pl.dataset.pct + '%'; }
+    if (currentReading) renderReading();
+  }
+  document.querySelectorAll('[data-lang-btn]').forEach(b => {
+    b.addEventListener('click', () => setLang(currentLang === 'zh' ? 'en' : 'zh'));
+  });
+
+  /* ===== 摄像头 / 拍照 / 上传 ===== */
+  const home = $('screen-home'), loading = $('screen-loading'), result = $('screen-result');
+  const liveVideo = $('liveVideo'), slotHint = $('slotHint'), fileInput = $('fileInput');
+  const resultFace = $('resultFace'); let stream = null, capturedData = null;
+  function show(el){ el.classList.remove('hidden'); } function hide(el){ el.classList.add('hidden'); }
+
+  async function startCamera(){
+    try{ stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'user' }, audio:false }); liveVideo.srcObject = stream; liveVideo.style.display = 'block'; slotHint.style.display = 'none'; }
+    catch(e){ slotHint.querySelector('span').textContent = I18N[currentLang].camFail; }
+  }
+  function stopCamera(){ if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; } liveVideo.style.display='none'; }
+  function captureFrame(){
+    const v = liveVideo; if(v.videoWidth === 0){ goLoading(); return; }
+    const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight;
+    c.getContext('2d').drawImage(v,0,0,c.width,c.height); capturedData = c.toDataURL('image/png'); stopCamera(); goLoading();
+  }
+  function useUploadedFile(file){ const reader = new FileReader(); reader.onload = () => { capturedData = reader.result; goLoading(); }; reader.readAsDataURL(file); }
+
+  function goLoading(){
+    hide(home); show(loading);
+    const fill = $('progressFill'), label = $('progressLabel');
+    const steps = [$('step1'),$('step2'),$('step3'),$('step4')]; let p = 0;
+    const timer = setInterval(()=>{
+      p += Math.random()*6 + 3;
+      if(p >= 100){ p = 100; clearInterval(timer); finishLoading(); }
+      fill.style.width = p + '%'; label.dataset.shown = '1'; label.dataset.pct = Math.floor(p);
+      label.textContent = I18N[currentLang].progLabel + ' ' + Math.floor(p) + '%';
+      const activeIdx = Math.min(3, Math.floor(p/25));
+      steps.forEach((s,i)=> s.classList.toggle('active', i<=activeIdx));
+    }, 180);
+  }
+  function finishLoading(){
+    if(capturedData){ resultFace.src = capturedData; resultFace.style.display = 'block'; const ph = resultFace.parentElement.querySelector('.ph'); if(ph) ph.style.display = 'none'; }
+    analyzePhoto(capturedData).then(function(features){
+      currentFeatures = features;
+      currentReading = buildReading(features, reshuffleNonce);
+      renderReading();
+    }).catch(function(){ currentReading = buildReading({mean:0.5,warmth:0,skinRatio:0.3,sharp:0.5,std:0.3}, reshuffleNonce); renderReading(); });
+    setTimeout(function(){ hide(loading); show(result); window.scrollTo(0,0); }, 700);
+  }
+  function resetToHome(){ stopCamera(); hide(result); hide(loading); show(home); window.scrollTo(0,0); }
+
+  /* ===================== 照片驱动命格引擎 ===================== */
+  let currentReading = null, currentFeatures = null, reshuffleNonce = 0;
+  I18N.zh.reshuffle = '换一卦'; I18N.en.reshuffle = 'Reshuffle';
+  I18N.zh.exportPdf = '导出 PDF'; I18N.en.exportPdf = 'Export PDF';
+
+  const ICONS = [
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 19 L9 9 L13 14 L16 8 L21 19 Z"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11 L12 4 L20 11"/><path d="M6 10 V20 H18 V10"/><rect x="10" y="14" width="4" height="6"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8.5" cy="8" r="3"/><path d="M3 20c0-3.3 3.1-5 5.5-5s5.5 1.7 5.5 5"/><circle cx="16.5" cy="9" r="2.4"/><path d="M14 20c0-2.6 2.2-4 4-4s3 1.4 3 4" opacity=".7"/></svg>',
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 9 V6 a3 3 0 0 1 6 0 V9"/><path d="M12 12 l1.5 1.6 L12 15 l-1.5-1.4 Z" fill="currentColor" stroke="none"/></svg>'
+  ];
+  const EL = {
+    metal:{zh:'金',en:'Metal',color:'#E8C766'}, wood:{zh:'木',en:'Wood',color:'#7FB069'},
+    water:{zh:'水',en:'Water',color:'#6FA8C7'}, fire:{zh:'火',en:'Fire',color:'#C46A5A'}, earth:{zh:'土',en:'Earth',color:'#C2A05A'}
+  };
+  const ORDER = ['metal','wood','water','fire','earth'];
+  const GMAP = {
+    metal:{zhengguan:'fire',zhengcai:'wood',shishen:'water',zhengyin:'earth',bijian:'metal'},
+    wood :{zhengguan:'earth',zhengcai:'earth',shishen:'fire',zhengyin:'water',bijian:'wood'},
+    water:{zhengguan:'earth',zhengcai:'fire',shishen:'wood',zhengyin:'metal',bijian:'water'},
+    fire :{zhengguan:'water',zhengcai:'metal',shishen:'earth',zhengyin:'wood',bijian:'fire'},
+    earth:{zhengguan:'wood',zhengcai:'water',shishen:'metal',zhengyin:'fire',bijian:'earth'}
+  };
+  const GODLABEL = { zhengguan:{zh:'正官',en:'Officer'}, zhengcai:{zh:'正财',en:'Wealth'}, shishen:{zh:'食神',en:'Output'}, zhengyin:{zh:'正印',en:'Resource'}, bijian:{zh:'比肩',en:'Friend'} };
+  const RELMAP = { zhengguan:{zh:'克我者',en:'controlled-by'}, zhengcai:{zh:'我克者',en:'controls'}, shishen:{zh:'我生者',en:'generates'}, zhengyin:{zh:'生我者',en:'generated-by'}, bijian:{zh:'同我者',en:'same'} };
+  const GOD_SEM = {
+    zhengguan:{zh:'官星主规矩、原则、地位与约束，行事有分寸则贵气自显。',en:'The Officer star governs rules, principles, status and restraint — discipline brings nobility.'},
+    zhengcai:{zh:'财星主实质财富、物质收获与经营之道，稳进积累为上。',en:'The Wealth star governs tangible wealth and management — steady accumulation wins.'},
+    shishen:{zh:'食神主才华外露、表达、口才与谋略，以才生财之途。',en:'The Output star governs talent, expression and strategy — monetize your skill.'},
+    zhengyin:{zh:'印星主学识根基、长辈庇荫与内心底气，厚积而从容。',en:'The Resource star governs knowledge, elder support and inner confidence.'},
+    bijian:{zh:'比肩主自我意志、同辈助力与良性竞争，独行亦能成事。',en:'The Friend star governs self-will, peer support and healthy competition.'}
+  };
+  const WUXING_DESC = {
+    metal:{zh:'金主刚毅、决断与聚财之力。',en:'Metal brings firmness, decisiveness and the power to accumulate.'},
+    wood :{zh:'木主生发、仁德与开创之机。',en:'Wood brings growth, kindness and initiative.'},
+    water:{zh:'水主智慧、流动与滋养之能。',en:'Water brings wisdom, flow and nurturing.'},
+    fire :{zh:'火主礼、热情与声名之光。',en:'Fire brings courtesy, passion and reputation.'},
+    earth:{zh:'土主诚信、承载与稳定之基。',en:'Earth brings trustworthiness, support and stability.'}
+  };
+  const SIHUA_NAME = { lu:{zh:'化禄',en:'Lu'}, quan:{zh:'化权',en:'Quan'}, ke:{zh:'化科',en:'Ke'}, ji:{zh:'化忌',en:'Ji'} };
+  const SIHUA_CORE = {
+    lu :{zh:'主增添缘分与喜气，所落之宫事半功倍、得来轻松。',en:'increases affinity and joy — that palace meets success with less effort.'},
+    quan:{zh:'主掌权、主导与掌控，该宫事务你说了算、敢担当。',en:'brings authority and control — you lead matters of that palace.'},
+    ke :{zh:'主名声、学习与贵人，该宫易得清誉与人助。',en:'brings reputation, learning and patrons — fame and help come easily.'},
+    ji :{zh:'主执念、亏欠与需用心经营，该宫是此生需刻意留意之处。',en:'brings obsession and needed care — the palace demands conscious attention.'}
+  };
+  const SIHUA_ADV = {
+    lu :{zh:'顺势而为，但防“来得易去得也快”，留底仓为上。',en:'Go with the flow, but guard easy-come-easy-go — keep reserves.'},
+    quan:{zh:'权多压身，学会授权，勿事必躬亲致过劳。',en:'Authority can burden — delegate, do not burn out doing it all.'},
+    ke :{zh:'口碑自传，宜公开分享、建立个人品牌。',en:'Word spreads — share publicly, build your personal brand.'},
+    ji :{zh:'留有余地，合同与关系皆需多一分包容与审视。',en:'Leave margin — contracts and relationships need extra care.'}
+  };
+  const SIHUA_COLOR = { lu:'#7FB069', quan:'#E8C766', ke:'#6FA8C7', ji:'#C46A5A' };
+  const PALACE_NOTE = {
+    '财帛宫':{zh:'主财源盈虚与用钱之道。',en:'governs income and money habits.'},
+    '事业宫':{zh:'主事业、职位与声望。',en:'governs career, position and reputation.'},
+    '交友宫':{zh:'主人缘、朋友与下属助力。',en:'governs friendship and ally support.'},
+    '田宅宫':{zh:'主家宅、房产与根基。',en:'governs home, property and roots.'},
+    '夫妻宫':{zh:'主婚姻、伴侣与合伙。',en:'governs marriage, partner and partnership.'}
+  };
+  const STARS = [
+    {g:'紫',zh:'紫微星 · 帝座',en:'Ziwei (Purple Micro) · Throne',el:'earth',shortZh:'紫微',shortEn:'Ziwei',temperZh:'贵气内敛',temperEn:'Noble yet reserved',metaZh:'阴土 · 北斗之主 · 官贵之星',metaEn:'Yin Earth · North Dipper Lord · Star of Nobility',natureZh:'号“帝座”，专司爵禄。令东来曰：“虽为人忠厚，而心地较小，且耳软心活。”主贵气与领导力。',natureEn:'Called the Throne, governing rank and salary. Ling Donglai: loyal-hearted yet narrow-minded, soft-eared. Brings nobility and leadership.',advZh:'宜觅得力搭档（左右），避免单打独斗；培养倾听以补耳软之弊；走管理或权威路线。',advEn:'Seek capable partners; avoid solo grind; cultivate listening; pursue management or authority tracks.'},
+    {g:'機',zh:'天机星 · 善星',en:'Tianji (Heavenly Mechanism) · Wisdom',el:'wood',shortZh:'天机',shortEn:'Tianji',temperZh:'机变多谋',temperEn:'Resourceful',metaZh:'阴木 · 南斗智星 · 化气为善',metaEn:'Yin Wood · Wisdom Star · South Dipper',natureZh:'号“善星”“谋星”，主智慧机变与策划。性急心善、善谋略而少决断，宜以智取胜。',natureEn:'The Wisdom Star — intelligence, strategy, planning. Quick-minded, kind, indecisive; win by wit.',advZh:'善用谋略规划，但需配执行搭档补决断；宜咨询、策划、技术专家；忌思多行少。',advEn:'Leverage strategy, but pair with an executor; consulting, planning, tech expert suits you; avoid overthinking.'},
+    {g:'日',zh:'太阳星 · 贵星',en:'Taiyang (Sun) · Radiance',el:'fire',shortZh:'太阳',shortEn:'Taiyang',temperZh:'光明热烈',temperEn:'Radiant',metaZh:'阳火 · 中天之星 · 化气为贵',metaEn:'Yang Fire · Central Star · Nobility',natureZh:'主光明、声名与博爱。性刚烈热情，主贵不主富；光芒外显，宜以名立身。',natureEn:'Brightness, fame, compassion. Fiery and passionate — brings status more than wealth; build on reputation.',advZh:'以名声立身，公开表达、教育培训、公众平台皆宜；防光芒过盛伤己，学会收敛。',advEn:'Build on reputation — public speaking, teaching, platforms; guard overexposure; learn restraint.'},
+    {g:'武',zh:'武曲星 · 财星',en:'Wuqu (Martial) · Wealth',el:'metal',shortZh:'武曲',shortEn:'Wuqu',temperZh:'刚毅果决',temperEn:'Resolute',metaZh:'阴金 · 北斗财星 · 化气为财',metaEn:'Yin Metal · Wealth Star · North Dipper',natureZh:'刚毅果决、重义气、擅理财；然性格偏冷，人情味稍淡，宜以实业聚财。',natureEn:'Firm, decisive, loyal, good with money; somewhat cool — build wealth through real industry.',advZh:'理财与实业之本命星；宜金融、制造、技术；主动经营人情温度，免财多情薄。',advEn:'Natural for finance, manufacturing, tech; warm up your interpersonal side to avoid rich but cold.'},
+    {g:'同',zh:'天同星 · 福星',en:'Tiantong (Heavenly Union) · Blessing',el:'water',shortZh:'天同',shortEn:'Tiantong',temperZh:'温和知足',temperEn:'Gentle',metaZh:'阳水 · 南斗福星 · 化气为福',metaEn:'Yang Water · Blessing Star · South Dipper',natureZh:'性情温和、知足常乐、人缘佳；然略嫌懒散、缺乏冲劲，宜守成享福。',natureEn:'Gentle, content, popular; tends to laziness, lacks drive — best at preserving and enjoying.',advZh:'福气之人宜守成，但需自加目标感以免安逸消磨；服务业、文创、社群皆宜。',advEn:'Lucky but add goals to avoid complacency; service, creative, community fields fit you.'},
+    {g:'廉',zh:'廉贞星 · 囚星',en:'Lianzhen (Chastity) · Prison',el:'fire',shortZh:'廉贞',shortEn:'Lianzhen',temperZh:'才情傲物',temperEn:'Talented',metaZh:'阴火 · 北斗次桃花 · 化气为囚',metaEn:'Yin Fire · Peach-Blossom Star · South Dipper',natureZh:'才情兼备、事业起伏大；带桃花与权谋，宜握权，需守正以防是非。',natureEn:'Talented and political, fluctuating fortune and romance; hold power but stay upright.',advZh:'才艺与权谋兼具；宜管理、公关、艺术；防桃花劫与情绪起伏，守正可成大器。',advEn:'Talent plus strategy — management, PR, arts; watch romance entanglements; integrity makes greatness.'},
+    {g:'府',zh:'天府星 · 库星',en:'Tianfu (Heavenly Store) · Treasury',el:'earth',shortZh:'天府',shortEn:'Tianfu',temperZh:'稳重保守',temperEn:'Steady',metaZh:'阳土 · 南斗财库 · 化气为贤',metaEn:'Yang Earth · Treasury Star · South Dipper',natureZh:'稳重保守、善理财、有积蓄；似空库，需禄存同宫方实，宜稳健置产。',natureEn:'Stable, conservative, good at saving; a treasury needing Lúcún to fill — favor steady assets.',advZh:'守财积累之才；宜银行、地产、仓储；稳健为上，忌投机；配禄存更利置产。',advEn:'A saver and builder — banking, real estate, warehousing; steady wins; avoid speculation.'},
+    {g:'陰',zh:'太阴星 · 富星',en:'Taiyin (Moon) · Wealth',el:'water',shortZh:'太阴',shortEn:'Taiyin',temperZh:'柔静内秀',temperEn:'Quiet',metaZh:'阴水 · 月之精 · 化气为富',metaEn:'Yin Water · Moon Essence · Wealth',natureZh:'性柔内敛、细腻多思，主财帛田宅与母缘；宜财务设计，补决断与外放。',natureEn:'Soft, introspective, detail-oriented — wealth, property, maternal ties; add decisiveness.',advZh:'财帛田宅之荫；宜财务、设计、幕僚；补决断与外放，勿过度内耗多思。',advEn:'Wealth and property blessing — finance, design, staff roles; be more decisive, less inward-drained.'},
+    {g:'贪',zh:'贪狼星 · 桃花',en:'Tanlang (Greedy Wolf) · Peach',el:'water',shortZh:'贪狼',shortEn:'Tanlang',temperZh:'多才浮动',temperEn:'Versatile',metaZh:'阳水 · 北斗桃花主 · 化气为桃花',metaEn:'Yang Water · Peach-Blossom Star · North Dipper',natureZh:'多才多艺、善交际、欲望强；心性浮动易贪多，需专注一艺以定浮心。',natureEn:'Versatile, sociable, desire-driven; restless mind — focus on one craft to settle it.',advZh:'才艺交际之本命；宜销售、演艺、创业；需专注一艺，防贪多嚼不烂。',advEn:'Talent and networking — sales, performance, startup; commit to one craft; avoid spreading thin.'},
+    {g:'巨',zh:'巨门星 · 暗星',en:'Jumen (Great Gate) · Dark',el:'water',shortZh:'巨门',shortEn:'Jumen',temperZh:'善辩多疑',temperEn:'Analytical',metaZh:'阴水 · 北斗暗星 · 化气为暗',metaEn:'Yin Water · Dark Star · North Dipper',natureZh:'善辩能言、钻研深邃；然易招口舌、多疑虑，以实学服人。',natureEn:'Eloquent and deeply analytical; prone to gossip and doubt — win others with real scholarship.',advZh:'口才与研究之才；宜律师、教师、调研；言多必失，守口如瓶以实学服人。',advEn:'Eloquence and research — law, teaching, analysis; silence is golden; let substance speak.'},
+    {g:'相',zh:'天相星 · 印星',en:'Tianxiang (Heavenly Premier) · Seal',el:'water',shortZh:'天相',shortEn:'Tianxiang',temperZh:'中和重仪',temperEn:'Diplomatic',metaZh:'阳水 · 南斗印星 · 化气为印',metaEn:'Yang Water · Seal Star · South Dipper',natureZh:'性情中和、重仪表、善协调，司文书印信；成事赖平台与靠山。',natureEn:'Balanced, dignified, coordinating; governs documents and seals — success depends on platform.',advZh:'文书服务之才；宜行政、外交、咨询；择良主而事，借平台成事。',advEn:'Documents and service — administration, diplomacy, consulting; serve a good master, ride a platform.'},
+    {g:'梁',zh:'天梁星 · 荫星',en:'Tianliang (Heavenly Beam) · Shelter',el:'earth',shortZh:'天梁',shortEn:'Tianliang',temperZh:'老成荫庇',temperEn:'Dependable',metaZh:'阳土 · 南斗荫星 · 化气为荫',metaEn:'Yang Earth · Shelter Star · South Dipper',natureZh:'稳重老成、善解厄庇佑、有担当；略带清高，以经验口碑立身。',natureEn:'Mature, protective, dependable — resolves crises; builds on experience; a bit lofty.',advZh:'解厄荫人之才；宜医药、教育、公益、顾问；以经验立身，忌好为人师过度说教。',advEn:'Crisis-solving — medicine, education, nonprofit, advisory; lead with experience, not lectures.'},
+    {g:'杀',zh:'七杀星 · 将星',en:'Qisha (Seven Killings) · General',el:'metal',shortZh:'七杀',shortEn:'Qisha',temperZh:'刚果开创',temperEn:'Pioneering',metaZh:'阳金 · 南斗将星 · 化气为将',metaEn:'Yang Metal · General Star · South Dipper',natureZh:'性刚果决、勇猛善战、主开创与权柄；孤克、成败起伏大，需谋定后动。',natureEn:'Fierce, decisive, pioneering, authoritative; lonely and volatile — plan before you strike.',advZh:'开创权柄之才；宜军警、创业、开拓岗；需团队辅佐与谋定后动，免刚极易折。',advEn:'Pioneering authority — military, entrepreneurship, trailblazing; need team support; brittle if rigid.'},
+    {g:'破',zh:'破军星 · 耗星',en:'Pojun (Breaking Army) · Destruction',el:'water',shortZh:'破军',shortEn:'Pojun',temperZh:'颠覆变革',temperEn:'Transformative',metaZh:'阴水 · 北斗耗星 · 化气为耗',metaEn:'Yin Water · Destruction Star · North Dipper',natureZh:'敢于颠覆、不守旧，主变革耗损；变动大，宜先立后破以稳根基。',natureEn:'Dares to overturn the old; governs change and upheaval — build before you break.',advZh:'破旧立新之才；宜改革、研发、转型；善先立后破，防冲动耗散。',advEn:'Old-breaking, new-building — reform, R&D, transformation; establish first, then break; avoid impulsive loss.'}
+  ];
+  const LIFE = [
+    {zh:'长生',en:'Birth',meaningZh:'万物始生、朝气蓬勃、潜力无限。',meaningEn:'All things begin — vitality and unlimited potential.',descZh:'你正处起步生发之期，宜大胆尝试、广结善缘，种下日后之因。',descEn:'You are at the sprouting stage — experiment boldly and build good connections.',tipZh:'📌 宜主动出击、学习新事物；忌畏首畏尾错失萌芽之机。',tipEn:'📌 Act now and learn; do not miss the sprout by hesitating.'},
+    {zh:'沐浴',en:'Bath',meaningZh:'脱胎换骨、去旧迎新，亦主情感浮动。',meaningEn:'Shedding the old — also emotional flux.',descZh:'如沐浴更衣，旧我渐褪新我始生；情感与形象易有变化。',descEn:'Like a bath, the old self fades; feelings and image shift.',tipZh:'📌 宜整理外在形象与人际圈；防桃花是非、情绪起伏。',tipEn:'📌 Refresh image and circle; beware romance trouble and mood swings.'},
+    {zh:'冠带',en:'Crown',meaningZh:'加冠成人、仪礼具备，渐入正轨。',meaningEn:'Coming of age — formality and the right track.',descZh:'能力初成、名分渐立，是积累资历、建立专业形象之期。',descEn:'Skill takes shape; time to build credentials and a professional image.',tipZh:'📌 宜考取资格、立专业人设；忌眼高手低。',tipEn:'📌 Get certified, build your expert brand; avoid arrogance without skill.'},
+    {zh:'临官',en:'Office',meaningZh:'出仕临民、学以致用，事业小成。',meaningEn:'Taking office — learning put to use, early success.',descZh:'所学得用、声名初显，是务实进取、稳步上升之期。',descEn:'Your learning pays off; steady rise and early recognition.',tipZh:'📌 宜在岗位上深耕、做出成果；忌频繁跳槽。',tipEn:'📌 Deepen your role and ship results; avoid job-hopping.'},
+    {zh:'帝旺',en:'Peak',meaningZh:'生命力最盛、成就欲最强、社会活跃度最高。',meaningEn:'Peak vitality, ambition and social activity.',descZh:'能力资源人脉皆达高峰，亦是易过度扩张之时。',descEn:'Ability, resources and network peak — yet prone to over-expansion.',tipZh:'📌 巩固成果、适度收敛、转化被动收益；关注健康。',tipEn:'📌 Consolidate, restrain, convert to passive income; watch health.'},
+    {zh:'衰',en:'Decline',meaningZh:'盛极始敛、宜收不宜放，守成为上。',meaningEn:'Peak begins receding — keep, do not expand.',descZh:'高峰之后渐入平稳，宜收束战线、巩固既有。',descEn:'After the peak, steady down — wind down fronts, secure what you have.',tipZh:'📌 不宜大开新局；重质不重量，保养身心。',tipEn:'📌 No big new launches; value quality; care for body and mind.'},
+    {zh:'病',en:'Sick',meaningZh:'气运偏弱、宜静养调护、休养生息。',meaningEn:'Energy dips — rest and recuperate.',descZh:'精力与运势走低，宜减少消耗、养精蓄锐。',descEn:'Vigor and fortune dip — cut consumption, recharge.',tipZh:'📌 宜体检、减债、修复关系；忌冒进与大决策。',tipEn:'📌 Check health, cut debt, mend ties; no big decisions.'},
+    {zh:'死',en:'Death',meaningZh:'旧循环终结、宜蛰伏沉淀、以待来生。',meaningEn:'An old cycle ends — lie low and settle.',descZh:'一段运势落幕，宜放下执念、沉淀复盘。',descEn:'A fortune phase ends; release attachment, review and settle.',tipZh:'📌 宜总结归档、轻装再出发；忌恋栈旧局。',tipEn:'📌 Summarize and travel light; do not cling to the old.'},
+    {zh:'墓',en:'Tomb',meaningZh:'入库收藏、能量内敛，宜积蓄待时。',meaningEn:'Stored away — energy turns inward; accumulate.',descZh:'如入库之藏，宜储蓄、学习、厚积；外显平淡内里充实。',descEn:'Like a stored treasure — save, study, accumulate; plain outside, rich within.',tipZh:'📌 宜读书蓄能、理财定存；忌张扬露白。',tipEn:'📌 Read and save; do not flaunt wealth.'},
+    {zh:'绝',en:'Extinct',meaningZh:'旧气已绝、新机未萌，宜蛰伏谋新。',meaningEn:'Old energy gone, new not yet born — plan in hiding.',descZh:'转折前的空档，宜断舍离、清理旧账，为新生腾地。',descEn:'The gap before a turn — declutter and clear old accounts for rebirth.',tipZh:'📌 宜断舍离、结束消耗性关系；耐心等待契机。',tipEn:'📌 Declutter, end draining ties; wait patiently for the opening.'},
+    {zh:'胎',en:'Embryo',meaningZh:'新机初孕、暗中酝酿，宜涵养守护。',meaningEn:'New life conceived in secret — nurture it.',descZh:'如胎藏母腹，新局暗生，宜低调养护、不急于显。',descEn:'Like a fetus, the new is forming — protect quietly, do not reveal yet.',tipZh:'📌 宜暗中筹备、保护创意；忌过早曝光。',tipEn:'📌 Prepare in secret, protect ideas; do not expose too early.'},
+    {zh:'养',en:'Nourish',meaningZh:'胎成待产、涵养成型，渐见曙光。',meaningEn:'Forming and nurturing — dawn approaches.',descZh:'新局成形、滋养待发，是黎明前的积蓄期。',descEn:'The new takes shape; the gathering before dawn.',tipZh:'📌 宜持续投入、耐心养护；转机将至勿弃。',tipEn:'📌 Keep investing patiently; the turn is near — do not quit.'}
+  ];
+  const DIR = {
+    metal:{zh:'金命利西方、西北（金融/科技/制造），南方火地易耗神，重大决策避巳午月。',en:'Metal benefits West/Northwest (finance, tech, manufacturing); South drains energy — avoid Snake-Horse months.'},
+    wood :{zh:'木命利东方、东南（文化/教育/生机），西方金地克木，重大决策避申酉月。',en:'Wood benefits East/Southeast (culture, education); West (Metal) restricts — avoid Monkey-Rooster months.'},
+    water:{zh:'水命利北方（流通/智慧/贸易），中央土地方克水，重大决策避辰戌丑未月。',en:'Water benefits North (flow, wisdom, trade); avoid Earth-center months for big moves.'},
+    fire :{zh:'火命利南方（文化/传媒/餐饮），北方水地克火，重大决策避亥子月。',en:'Fire benefits South (media, catering); North (Water) restricts — avoid Pig-Rat months.'},
+    earth:{zh:'土命利中央、西南（地产/教育/诚信），东方木地克土，重大决策避寅卯月。',en:'Earth benefits Center/Southwest (real estate, education); East (Wood) restricts — avoid Tiger-Rabbit months.'}
+  };
+  const DIRSHORT = {
+    metal:{zh:'宜西忌南',en:'West↑ South↓'}, wood:{zh:'宜东忌西',en:'East↑ West↓'},
+    water:{zh:'宜北忌中',en:'North↑ Center↓'}, fire:{zh:'宜南忌北',en:'South↑ North↓'}, earth:{zh:'宜中忌东',en:'Center↑ East↓'}
+  };
+  const HEALTH = {
+    metal:{zh:'金主肺与大肠，金旺注意肺部清润、少烟尘；金弱则呼吸系统偏弱，宜有氧深呼吸。',en:'Metal rules lungs/intestines — if strong keep clear; if weak, do aerobic breathing.'},
+    wood :{zh:'木主肝胆，木旺宜疏解情绪、少饮酒；木弱则肝胆偏弱，宜规律作息。',en:'Wood rules liver/gallbladder — if strong release stress, less alcohol; if weak, regular sleep.'},
+    water:{zh:'水主肾与泌尿，水旺宜节欲保暖；水弱则肾气偏弱，宜补水养精、避免过劳。',en:'Water rules kidneys — if strong moderate; if weak, rest and hydrate.'},
+    fire :{zh:'火主心与血脉，火旺宜静心少躁；火弱则心血管偏弱，定期检查血压心率。',en:'Fire rules heart/blood — if weak, monitor BP/heart rate; if strong, stay calm.'},
+    earth:{zh:'土主脾胃，土旺宜饮食有节；土弱则消化偏弱，宜规律三餐、少生冷。',en:'Earth rules spleen/stomach — if weak, eat regularly, avoid cold raw food.'}
+  };
+
+  const clamp = (v,a,b)=> Math.max(a, Math.min(b, v));
+  const T = (zh,en)=> currentLang === 'zh' ? zh : en;
+  function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+
+  function analyzePhoto(dataURL){
+    return new Promise(function(resolve){
+      const img = new Image();
+      img.onload = function(){
+        const W=140,H=140; const c=document.createElement('canvas'); c.width=W; c.height=H;
+        const ctx=c.getContext('2d'); ctx.drawImage(img,0,0,W,H);
+        let d; try{ d=ctx.getImageData(0,0,W,H).data; }catch(e){ resolve({mean:0.5,warmth:0,skinRatio:0.3,sharp:0.5,std:0.3}); return; }
+        let sum=0,sumSq=0,rS=0,bS=0,skin=0,n=W*H;
+        for(let i=0;i<d.length;i+=4){ const r=d[i],g=d[i+1],b=d[i+2]; const l=0.299*r+0.587*g+0.114*b; sum+=l; sumSq+=l*l; rS+=r; bS+=b; if(r>95&&g>40&&b>20&&r>g&&r>b&&(Math.max(r,g,b)-Math.min(r,g,b))>15) skin++; }
+        const mean=sum/n; const variance=sumSq/n-mean*mean; const std=Math.sqrt(Math.max(0,variance));
+        const warmth=(rS-bS)/(n*255); const skinRatio=skin/n;
+        let edge=0; for(let y=1;y<H;y++) for(let x=1;x<W;x++){ const i=(y*W+x)*4, i2=((y-1)*W+x)*4, i3=(y*W+(x-1))*4; edge+=Math.abs(d[i]-d[i2])+Math.abs(d[i]-d[i3]); }
+        const sharp=Math.min(1, edge/(n*70));
+        resolve({mean:mean,warmth:warmth,skinRatio:skinRatio,sharp:sharp,std:std});
+      };
+      img.onerror=function(){ resolve({mean:0.5,warmth:0,skinRatio:0.3,sharp:0.5,std:0.3}); };
+      img.src=dataURL;
+    });
+  }
+
+  function buildReading(f, nonce){
+    const seed = (Math.floor((f.mean*131 + (f.warmth+1)*977 + f.skinRatio*311 + f.sharp*599 + f.std*53)*1000) ^ (nonce*2654435761)) >>> 0;
+    const rng = mulberry32(seed);
+    const rand=(a,b)=> a + rng()*(b-a);
+    const randi=(a,b)=> Math.floor(rand(a,b+1));
+    const pick=arr=> arr[Math.floor(rng()*arr.length)];
+
+    const raw = {
+      metal: 40 + f.sharp*38 + (1-f.warmth)*16 + rand(0,10),
+      wood : 36 + (1-f.std)*22 + rand(0,12),
+      water: 36 + f.skinRatio*46 + (1-f.sharp)*12 + rand(0,10),
+      fire : 34 + ((f.warmth+1)/2)*46 + f.mean*0.08 + rand(0,10),
+      earth: 38 + f.mean*0.22 + (1-f.skinRatio)*16 + rand(0,10)
+    };
+    const max = Math.max(raw.metal,raw.wood,raw.water,raw.fire,raw.earth);
+    const els = {}; let domKey = 'metal';
+    ORDER.forEach(k=>{ els[k]=Math.round(40 + (raw[k]/max)*50); if(raw[k]>raw[domKey]) domKey=k; });
+    els[domKey] = clamp(els[domKey] + randi(0,4), 70, 97);
+    const dm = domKey;
+
+    const star = pick(STARS);
+    const palacesList = ['财帛宫','事业宫','交友宫','田宅宫','夫妻宫'];
+    const palacesEn  = ['Wealth','Career','Friends','Property','Spouse'];
+    const sihuaKeys = ['lu','quan','ke','ji'];
+    const ps = palacesList.slice(); for(let i=ps.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));const t=ps[i];ps[i]=ps[j];ps[j]=t;}
+    const pe = palacesEn.slice(); for(let i=pe.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));const t=pe[i];pe[i]=pe[j];pe[j]=t;}
+    const sihua = sihuaKeys.map((k,i)=>({key:k, palaceZh:ps[i], palaceEn:pe[i]}));
+    const palaceToSihua = {}; sihua.forEach(s=>{ palaceToSihua[s.palaceZh]=s.key; });
+
+    const stage = pick(LIFE);
+
+    const gods = ['zhengguan','zhengcai','shishen','zhengyin','bijian'].map(g=>{
+      const elKey = GMAP[dm][g];
+      const strength = els[elKey];
+      const bucket = strength>=78?'strong': strength>=60?'mid':'weak';
+      const tailZh = bucket==='strong'?'今'+EL[elKey].zh+'气偏旺，其性彰显，宜善发挥而不至过亢。'
+                  : bucket==='mid'?'今'+EL[elKey].zh+'气中和，稳中有进，宜持之以恆。'
+                  : '今'+EL[elKey].zh+'气偏弱，宜主动涵养、补其不足。';
+      const tailEn = bucket==='strong'?'Now '+EL[elKey].en+' runs strong — wield it without excess.'
+                  : bucket==='mid'?'Now '+EL[elKey].en+' is balanced — steady progress; be consistent.'
+                  : 'Now '+EL[elKey].en+' runs weak — nurture and supplement it.';
+      return {
+        elKey:elKey,
+        descZh: EL[dm].zh+'以'+EL[elKey].zh+'为'+GODLABEL[g].zh+'。'+WUXING_DESC[elKey].zh+GOD_SEM[g].zh+tailZh,
+        descEn: EL[dm].en+' takes '+EL[elKey].en+' as '+GODLABEL[g].en+'. '+WUXING_DESC[elKey].en+' '+GOD_SEM[g].en+' '+tailEn,
+        labelZh:GODLABEL[g].zh, labelEn:GODLABEL[g].en, relZh:RELMAP[g].zh, relEn:RELMAP[g].en
+      };
+    });
+
+    const face = (function(){ const b=f.mean,c=f.std,s=f.skinRatio,sh=f.sharp;
+      const up = b>0.62?{zh:'天庭饱满、发际整齐、额角开阔，主少年运顺、得长辈荫庇。',en:'Full bright forehead — smooth youth, elder blessing.'}
+                : b>0.45?{zh:'天庭方圆、额形端正，少年运平稳有扶。',en:'Square-round forehead — steady youth with support.'}
+                : {zh:'天庭略平、发际偏低，少年运需自砺，晚发之象。',en:'Flatter forehead — youth needs self-effort; late bloomer.'};
+      const mid= c>40?{zh:'鼻梁挺直、山根有势、鼻头有肉，中停主财库与自我，中年运渐入佳境。',en:'Straight strong nose — middle-stop governs treasury and self; mid-life improves.'}
+                : {zh:'鼻形端正、鼻准匀停，中年运稳中有进。',en:'Even nose — steady mid-life progress.'};
+      const low= s>0.32?{zh:'地阁方圆、腮骨有力，晚年安稳有依靠。',en:'Square chin, strong jaw — stable late years with support.'}
+                : {zh:'地阁略尖，晚年宜早做财务与健康管理。',en:'Slightly pointed chin — plan finances and health early.'};
+      const brow= c>40?{zh:'眉形清朗、眉尾微扬，主思维清晰、志向高远。',en:'Clear brows, raised tails — clear thinking, high aspirations.'}
+                : {zh:'眉色偏淡、眉形平和，主性情温厚、宜养神。',en:'Lighter calm brows — gentle nature; nourish spirit.'};
+      const eye= sh>0.5?{zh:'眼神清澈专注、黑白分明，主智慧深沉、做事投入。',en:'Clear focused gaze — deep wisdom, committed action.'}
+                : {zh:'眼神柔和内敛，主心思细腻、宜外放表达。',en:'Soft inward gaze — delicate mind; express more outwardly.'};
+      return [
+        {partZh:'上停 · 天庭',partEn:'Upper Stop · Forehead', textZh:up.zh+'《麻衣神相》谓“天庭饱满，少年富贵”。', textEn:up.en+' ("Full forehead, wealthy youth" — Ma Yi).'},
+        {partZh:'中停 · 鼻准',partEn:'Middle Stop · Nose', textZh:mid.zh+'《神相全编》云“鼻如悬胆，财丰库实”。', textEn:mid.en+' ("Nose like hanging gallbladder, full treasury" — Shen Xiang).'},
+        {partZh:'下停 · 地阁',partEn:'Lower Stop · Chin', textZh:low.zh+'地阁属水，主晚福与智慧沉淀。', textEn:low.en+' Chin belongs to Water — late blessings and wisdom.'},
+        {partZh:'眉毛',partEn:'Eyebrows', textZh:brow.zh+'眉主兄弟宫与情感表达。', textEn:brow.en+' Brows govern the Siblings palace.'},
+        {partZh:'眼睛',partEn:'Eyes', textZh:eye.zh+'眼为心之窗，主智慧与情感深度。', textEn:eye.en+' Eyes are the window of the heart.'}
+      ];
+    })();
+
+    const palaceForDim = {wealth:'财帛宫',career:'事业宫',family:'田宅宫',social:'交友宫',office:'事业宫'};
+    const dimDefs = [
+      {key:'wealth',nameZh:'财运',nameEn:'Wealth',subZh:'财帛宫 · Wealth Palace',ks:['metal','water'],color:EL.metal.color,icon:ICONS[0]},
+      {key:'career',nameZh:'事业',nameEn:'Career',subZh:'官禄宫 · Career Palace',ks:['wood','fire'],color:EL.wood.color,icon:ICONS[1]},
+      {key:'family',nameZh:'家庭',nameEn:'Family',subZh:'田宅宫 · Property Palace',ks:['water','earth'],color:EL.water.color,icon:ICONS[2]},
+      {key:'social',nameZh:'人际',nameEn:'Relationships',subZh:'交友宫 · Friends Palace',ks:['fire','wood'],color:EL.fire.color,icon:ICONS[3]},
+      {key:'office',nameZh:'仕途',nameEn:'Official Path',subZh:'官禄宫 · Merit Palace',ks:['earth','metal'],color:EL.earth.color,icon:ICONS[4]}
+    ];
+    const dims = dimDefs.map(d=>{
+      const score = clamp(Math.round(52 + (els[d.ks[0]]+els[d.ks[1]])/2*0.46 + rand(-4,4)), 55, 97);
+      const palace = palaceForDim[d.key];
+      const sKey = palaceToSihua[palace];
+      const deepZh = sKey ? ('【深度】'+palace+'见'+SIHUA_NAME[sKey].zh+'：'+SIHUA_CORE[sKey].zh+SIHUA_ADV[sKey].zh)
+                          : ('【深度】'+palace+'无四化飞临，主平稳顺遂，宜守正持恒、顺势而为。');
+      const deepEn = sKey ? ('[Deep] '+palace+' sees '+SIHUA_NAME[sKey].en+': '+SIHUA_CORE[sKey].en+' '+SIHUA_ADV[sKey].en)
+                          : ('[Deep] No Four Transformation lands in '+palace+' — smooth and steady; stay upright and consistent.');
+      const descZh = '（'+d.nameZh+'）'+EL[d.ks[0]].zh+'主其性，'+WUXING_DESC[d.ks[0]].zh;
+      const descEn = '('+d.nameEn+') '+EL[d.ks[0]].en+' shapes its nature — '+WUXING_DESC[d.ks[0]].en;
+      return {nameZh:d.nameZh,nameEn:d.nameEn,subZh:d.subZh,subEn:d.subEn,score:score,color:d.color,icon:d.icon,descZh:descZh,descEn:descEn,deepZh:deepZh,deepEn:deepEn};
+    });
+
+    const sihuaSumZh = sihua.map(s=>SIHUA_NAME[s.key].zh+'在'+s.palaceZh).join('、');
+    const sihuaSumEn = sihua.map(s=>SIHUA_NAME[s.key].en+' in '+s.palaceEn).join(', ');
+    const assessZh = '观你面相与命盘，'+star.zh+'坐命，五行以'+EL[dm].zh+'为主（'+els[dm]+'），赋予你'+WUXING_DESC[dm].zh+'四化飞星：'+sihuaSumZh+'。长生十二神显示你正处于「'+stage.zh+'」阶段——'+stage.meaningZh+'。命理示人以趋势，非定数；真正改运的，是你日复一日的修为与选择。你的命盘底色是“'+EL[dm].zh+'旺'+star.shortZh+'”——一个'+star.temperZh+'的格局；如何活成好人生，钥匙在你自己手里。';
+    const assessEn = 'Your face and chart show '+star.en+' in Destiny, with '+EL[dm].en+' dominant ('+els[dm]+'), granting you '+WUXING_DESC[dm].en+' Four Transformations: '+sihuaSumEn+'. The 12 Life Stages place you in "'+stage.en+'" — '+stage.meaningEn+' Metaphysics reveals trends, not destiny; what truly changes your fortune is your daily cultivation. Your base is "'+EL[dm].en+'-strong '+star.shortEn+'" — a '+star.temperEn+' chart; how you live it is up to you.';
+
+    const weakSorted = ORDER.slice().sort((a,b)=> els[a]-els[b]);
+    const weakest = weakSorted[0], second = weakSorted[1];
+    const homeSihua = palaceToSihua['田宅宫'];
+    const advice = [
+      {zh:'① 调候补偏：你'+EL[weakest].zh+'气偏弱（'+els[weakest]+'），宜主动涵养——'+HEALTH[weakest].zh, en:'① Tonify '+EL[weakest].en+': your '+EL[weakest].en+' runs weak ('+els[weakest]+') — '+HEALTH[weakest].en},
+      {zh:'② 生发之势：你'+EL[second].zh+'气待振（'+els[second]+'），每年启动一件从零到一的新事，激活其生发之气。', en:'② Generate '+EL[second].en+': your '+EL[second].en+' needs a boost ('+els[second]+') — launch one zero-to-one project yearly.'},
+      {zh:'③ 方位宜忌：'+DIR[dm].zh, en:'③ Direction: '+DIR[dm].en},
+      {zh:'④ 人际修行：'+star.advZh, en:'④ Relationships: '+star.advEn},
+      {zh: homeSihua==='ji' ? '⑤ 家宅锚定：田宅宫化忌，宜长期扎根一地、合同细审、家人多包容。' : '⑤ 家宅安稳：'+PALACE_NOTE['田宅宫'].zh+'宜选一城长期扎根，年做断舍离以通气场。',
+       en: homeSihua==='ji' ? '⑤ Home anchor: Ji in Property — root in one place, review contracts, tolerate family.' : '⑤ Home stability: '+PALACE_NOTE['田宅宫'].en+' root in one city; annual declutter.'},
+      {zh:'⑥ 综合：命理为趋势非定数，定期体检、规律作息、宽心少虑，胜过一切趋避之术。', en:'⑥ Overall: metaphysics is trend, not fate — regular checkups, good sleep and a calm mind beat any hack.'}
+    ];
+
+    return { els:els, dm:dm, dominantVal:els[dm], star:star, sihua:sihua, palaceToSihua:palaceToSihua, stage:stage, gods:gods, face:face, dims:dims, assessZh:assessZh, assessEn:assessEn, advice:advice };
+  }
+
+  function renderReading(){
+    const r = currentReading; if(!r) return;
+    const dm = r.dm;
+    $('headTitle').innerHTML = T(EL[dm].zh+'命 · '+r.star.shortZh+'坐命', EL[dm].en+' Fate · '+r.star.shortEn+' in Destiny');
+    $('chipRow').innerHTML = '<span class="chip">'+T(EL[dm].zh+'旺',EL[dm].en+' Strong')+'</span><span class="chip">'+T(r.star.temperZh,r.star.temperEn)+'</span><span class="chip">'+T(DIRSHORT[dm].zh,DIRSHORT[dm].en)+'</span>';
+    $('fiveEl').innerHTML = ORDER.map(k=>{ const v=r.els[k], e=EL[k];
+      return '<div class="el-row"><span class="el-name" style="color:'+e.color+'">'+T(e.zh,e.en)+'</span><div class="el-track"><div class="el-fill" style="width:'+v+'%;background:'+e.color+'"></div></div><span class="el-val">'+v+'</span></div>';
+    }).join('');
+    $('dims').innerHTML = r.dims.map(d=>{
+      return '<div class="dim-card"><div class="dim-head"><span class="dim-left">'
+        +'<span class="dim-icon" style="color:'+d.color+'">'+d.icon+'</span>'
+        +'<span class="dim-text"><span class="dim-name">'+T(d.nameZh,d.nameEn)+'</span><span class="dim-sub">'+T(d.subZh,d.subEn)+'</span></span>'
+        +'</span><span class="dim-score" style="color:'+d.color+'">'+d.score+'</span></div>'
+        +'<div class="dim-track"><div class="dim-fill" style="width:'+d.score+'%;background:'+d.color+'"></div></div>'
+        +'<div class="dim-desc">'+T(d.descZh,d.descEn)+'</div>'
+        +'<div class="dim-deep">'+T(d.deepZh,d.deepEn)+'</div></div>';
+    }).join('');
+
+    const star = r.star;
+    let html = '';
+    html += '<div class="deep-block"><div class="deep-block-head"><span class="deep-block-title">'+T('紫微主星定位','Major Star Profile')+'</span><span class="deep-block-sub">'+T('十四正曜之一 · 命宫主星决定核心性格','One of 14 Major Stars · Destiny Palace star')+'</span></div>'
+      +'<div class="star-profile"><div class="star-emblem">'+star.g+'</div><div class="star-info">'
+      +'<div class="star-name">'+T(star.zh,star.en)+'</div>'
+      +'<div class="star-meta">'+T(star.metaZh,star.metaEn)+'</div>'
+      +'<div class="star-nature">'+T(star.natureZh,star.natureEn)+'</div>'
+      +'<div class="star-advice">'+T(star.advZh,star.advEn)+'</div>'
+      +'</div></div></div>';
+    html += '<div class="deep-block"><div class="deep-block-head"><span class="deep-block-title">'+T('十神格局','Ten Gods Pattern')+'</span><span class="deep-block-sub">'+T('日主为'+EL[dm].zh+' · 以五行生克推演十神 · 子平体系','Day Master is '+EL[dm].en+' · Ten Gods from Five-Element interaction · Zi Ping')+'</span></div>'
+      +'<div class="gods">'+r.gods.map(g=>{
+        return '<div class="god"><div class="god-name" style="color:'+EL[g.elKey].color+'">'+T(g.labelZh,g.labelEn)+'<span class="god-el">'+EL[g.elKey].zh+' · '+T(g.relZh,g.relEn)+'</span></div>'
+          +'<div class="god-desc">'+T(g.descZh,g.descEn)+'</div>'
+          +'<div class="god-source">— 子平八字·十神论</div></div>';
+      }).join('')+'</div></div>';
+    html += '<div class="deep-block"><div class="deep-block-head"><span class="deep-block-title">'+T('四化飞星','Four Transformations Flying Stars')+'</span><span class="deep-block-sub">'+T('紫微斗数四化 · 禄权科忌之流转','Ziwei Dou Shu Four Transformations · Lu-Quan-Ke-Ji flow')+'</span></div>'
+      +'<div class="sihua">'+r.sihua.map(s=>{
+        return '<div class="sihua-item"><div class="sihua-header"><div class="sihua-dot" style="background:'+SIHUA_COLOR[s.key]+'"></div><span class="sihua-name" style="color:'+SIHUA_COLOR[s.key]+'">'+T(SIHUA_NAME[s.key].zh,SIHUA_NAME[s.key].en)+'</span></div>'
+          +'<div class="sihua-palace">'+T('落 · '+s.palaceZh,'Falls in · '+s.palaceEn)+'</div>'
+          +'<div class="sihua-desc">'+T(SIHUA_CORE[s.key].zh,SIHUA_CORE[s.key].en)+'</div>'
+          +'<div class="sihua-effect">'+T(SIHUA_ADV[s.key].zh,SIHUA_ADV[s.key].en)+'</div></div>';
+      }).join('')+'</div></div>';
+    html += '<div class="deep-block"><div class="deep-block-head"><span class="deep-block-title">'+T('面相三停五官详批','Physiognomy Detail · Three Stops & Five Features')+'</span><span class="deep-block-sub">'+T('传统相学 · 三停配五行 · 五官辨吉凶','Traditional Face Reading · Three Stops matched to Five Elements')+'</span></div>'
+      +'<div class="face-read">'+r.face.map(f=>{
+        return '<div class="face-row"><div class="face-part">'+T(f.partZh,f.partEn)+'</div><div class="face-text">'+T(f.textZh,f.textEn)+'</div></div>';
+      }).join('')+'</div></div>';
+    html += '<div class="deep-block"><div class="deep-block-head"><span class="deep-block-title">'+T('长生十二神 · 当前阶段','12 Life Stages · Current Phase')+'</span><span class="deep-block-sub">'+T('五行生命周期 · 你正处于此阶段','Five-Element lifecycle · your current phase')+'</span></div>'
+      +'<div class="life-stage"><div class="life-stage-top"><div class="stage-ring"><span style="font-family:\'Noto Serif SC\',serif;font-weight:700;font-size:16px;color:var(--gold);">'+T(r.stage.zh,r.stage.en)+'</span></div>'
+      +'<div class="stage-info"><div class="stage-name">'+T(r.stage.zh+' 阶段',r.stage.en+' Stage')+'</div><div class="stage-meaning">'+T(r.stage.meaningZh,r.stage.meaningEn)+'</div></div></div>'
+      +'<div class="stage-desc">'+T(r.stage.descZh,r.stage.descEn)+'</div>'
+      +'<div class="stage-tip">'+T(r.stage.tipZh,r.stage.tipEn)+'</div></div></div>';
+    $('deepSection').innerHTML = html;
+
+    $('assessCard').innerHTML = '<div class="assess-quote">'+(currentLang==='zh'?'“死生有命，富贵在天。” ——《论语·颜渊》引夏人之言':'"Death and life have their fate; wealth and honor rest with Heaven." — Zixia')+'</div>'
+      +'<div class="assess-body">'+T(r.assessZh,r.assessEn)+'</div>'
+      +'<div class="advice"><div class="advice-title">'+T('趋吉避凶 · 六则','Six Tips for Luck')+'</div>'
+      + r.advice.map(a=>'<p>'+T(a.zh,a.en)+'</p>').join('')
+      +'</div>'
+      +'<div class="refs">'+T('参考典籍：《紫微斗数命理学》（令东来）、《紫微斗数精成》（大德山人）、《紫微斗数南北派断诀》（朱云山）、《钦天四化紫微斗数命理学》（许铨仁）、《紫微斗数初级讲义》（天翼术数）、《陆斌兆紫微斗数讲义评注》、《中国古代算命术》（洪丕谟/姜玉珍）',
+        'References: "Ziwei Dou Shu Ming Li Xue" (Ling Donglai), "Ziwei Dou Shu Jing Cheng" (Da De Shan Ren), "Nan Bei Pai Duan Jue" (Zhu Yunshan), "Qin Tian Si Hua" (Xu Quanren), "Ziwei Dou Shu Primary Lectures" (Tian Yi), "Lu Bin Zuo Lecture Notes", "Ancient Chinese Fortune-Telling Arts" (Hong Pi Mo / Jiang Yu Zhen)')+'</div>';
+  }
+
+  $('reshuffleBtn').addEventListener('click', function(){
+    reshuffleNonce = (reshuffleNonce + 1) >>> 0;
+    if(currentFeatures){ currentReading = buildReading(currentFeatures, reshuffleNonce); renderReading(); window.scrollTo(0,0); }
+  });
+
+  /* ===================== PDF 导出（带水印） ===================== */
+  (function buildWatermark(){
+    const wm = document.getElementById('pdfWm');
+    if(!wm) return;
+    const txt = '面相 · 五行';
+    const svg = "<svg xmlns='http://www.w3.org/2000/svg' width='360' height='240'>"
+      + "<text x='0' y='150' transform='rotate(-26 180 120)' font-family='Noto Serif SC, serif' font-size='22' fill='rgb(201,162,75)' fill-opacity='0.15'>"+txt+"</text></svg>";
+    wm.style.backgroundImage = "url(\"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg)+"\")";
+  })();
+
+  $('exportBtn').addEventListener('click', function(){
+    if(currentReading){
+      const r = currentReading;
+      const d = new Date();
+      const pad = n => String(n).padStart(2,'0');
+      const ds = ''+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());
+      document.title = '命理测算_'+r.star.shortZh+'_'+ds;
+    }
+    window.print();
+  });
+
+  $('startBtn').addEventListener('click', startCamera);
+  $('captureBtn').addEventListener('click', captureFrame);
+  $('uploadBtn').addEventListener('click', ()=> fileInput.click());
+  fileInput.addEventListener('change', e=>{ if(e.target.files[0]) useUploadedFile(e.target.files[0]); });
+  $('cancelBtn').addEventListener('click', resetToHome);
+  $('rephotoBtn').addEventListener('click', resetToHome);
+</script>
+</body>
+</html>
