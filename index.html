@@ -222,6 +222,26 @@
   .sc-quote{margin-top:16px;padding-top:13px;border-top:1px dashed rgba(201,162,75,.3);font-family:"Noto Serif SC",serif;font-size:13px;line-height:22px;color:var(--gold-lite);text-align:center;}
   .sc-foot{margin-top:13px;text-align:center;font-size:10px;color:var(--faint);letter-spacing:.4px;}
 
+  /* ========== 分享面板（主流社媒） ========== */
+  .share-sheet{position:fixed;inset:0;z-index:100000;display:flex;align-items:flex-end;justify-content:center;}
+  .share-sheet.hidden{display:none;}
+  .share-mask{position:absolute;inset:0;background:rgba(8,6,3,.62);backdrop-filter:blur(2px);}
+  .share-panel{position:relative;width:100%;max-width:480px;background:linear-gradient(165deg,#231C13 0%,#171109 100%);border:1px solid var(--gold);border-bottom:none;border-radius:22px 22px 0 0;padding:22px 22px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -18px 50px rgba(0,0,0,.5);animation:shareUp .28s ease;}
+  @keyframes shareUp{from{transform:translateY(40px);opacity:.4}to{transform:translateY(0);opacity:1}}
+  .share-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .share-panel-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:17px;color:var(--cream);letter-spacing:1px;}
+  .share-close{font-size:24px;color:var(--muted);cursor:pointer;line-height:1;padding:0 4px;}
+  .share-hint{font-size:12.5px;color:var(--gold-lite);line-height:19px;margin:0 0 16px;}
+  .share-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;}
+  .share-item{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;padding:4px 0;}
+  .share-item:active{opacity:.7;}
+  .share-ico{width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:"Noto Sans SC",sans-serif;font-weight:700;font-size:20px;color:#fff;box-shadow:0 6px 16px rgba(0,0,0,.35);}
+  .share-name{font-size:12px;color:var(--muted);}
+  .share-qr{margin-top:18px;display:none;flex-direction:column;align-items:center;gap:10px;padding-top:16px;border-top:1px dashed rgba(201,162,75,.3);}
+  .share-qr img{width:180px;height:180px;border-radius:14px;background:#F3E9CF;padding:10px;box-sizing:border-box;}
+  .share-qr-tip{font-size:11.5px;color:var(--muted);text-align:center;margin:0;line-height:17px;}
+  @media (min-width:861px){ .share-sheet{align-items:center;} .share-panel{border-radius:22px;border:1px solid var(--gold);} }
+
   @media (max-width:860px){
     .home-body{flex-direction:column;padding:32px 20px;gap:36px;}.left-col{width:100%;}.h1{font-size:34px;line-height:46px;}
     .nav{padding:0 20px;}.result-head{flex-direction:column;align-items:flex-start;padding:28px 20px;gap:20px;}
@@ -315,7 +335,7 @@
     <nav class="nav">
       <span class="brand-name">一照知运</span>
       <div class="nav-actions">
-        <span class="nav-link" data-i18n="save">保存命盘</span>
+        <span class="nav-link" id="saveBtn" data-i18n="save">保存命盘</span>
         <span class="nav-link" id="shareLink" data-i18n="share">分享</span>
         <button class="lang-toggle" data-lang-btn>EN</button>
       </div>
@@ -1193,19 +1213,102 @@
     t.textContent = msg; t.style.opacity='1';
     clearTimeout(t._tm); t._tm=setTimeout(function(){ t.style.opacity='0'; }, 1900);
   }
+  /* ===================== 分享面板（主流社媒） ===================== */
+  const SHARE_URL = (location.href || 'https://dabowen-jun.github.io/facefates/').split('#')[0];
+  const SHARE_TITLE = '一照知运 · 面相五行趣味测算';
+  const SHARE_TEXT = '我用「一照知运」测了面相命盘，结果居然… 你也来试试！';
+  const SHARE_PIC = SHARE_URL.replace(/\/$/,'') + '/share-cover.png';
+  const enc = encodeURIComponent;
+
+  function openShareSheet(){
+    const sheet = document.getElementById('shareSheet');
+    if(sheet) sheet.classList.remove('hidden');
+    const sys = document.getElementById('shareSystem');
+    if(sys) sys.style.display = navigator.share ? 'flex' : 'none';
+    const qr = document.getElementById('shareQr'); if(qr) qr.style.display='none';
+  }
+  function closeShareSheet(){
+    const sheet = document.getElementById('shareSheet');
+    if(sheet) sheet.classList.add('hidden');
+  }
   const shareLinkEl = document.getElementById('shareLink');
-  if(shareLinkEl){ shareLinkEl.addEventListener('click', function(){
-    const url = (location.href || 'https://dabowen-jun.github.io/facefates/').split('#')[0];
-    const title = '一照知运 · 我的命盘';
-    const card = document.getElementById('shareCard');
-    if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
-    if(navigator.share){
-      navigator.share({ title: title, text: '我用「一照知运」测了我的面相命盘，快来试试！', url: url }).catch(function(){});
-    } else {
-      try { if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url); toast('链接已复制，去粘贴分享吧 ✦'); } else { toast('分享链接：'+url); } }
-      catch(e){ toast('分享链接：'+url); }
-    }
+  if(shareLinkEl){ shareLinkEl.addEventListener('click', openShareSheet); }
+  const shareMask = document.getElementById('shareMask');
+  if(shareMask) shareMask.addEventListener('click', closeShareSheet);
+  const shareClose = document.getElementById('shareClose');
+  if(shareClose) shareClose.addEventListener('click', closeShareSheet);
+
+  document.querySelectorAll('.share-item').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const type = btn.getAttribute('data-share');
+      if(type === 'copy'){
+        try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(SHARE_URL); toast('链接已复制，去粘贴分享吧 ✦'); } else { toast(SHARE_URL); } }
+        catch(e){ toast(SHARE_URL); }
+        closeShareSheet(); return;
+      }
+      if(type === 'system'){
+        if(navigator.share){ navigator.share({title:SHARE_TITLE, text:SHARE_TEXT, url:SHARE_URL}).catch(function(){}); }
+        closeShareSheet(); return;
+      }
+      if(type === 'wechat'){
+        const qr = document.getElementById('shareQr');
+        const img = document.getElementById('shareQrImg');
+        if(qr && img){
+          img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=10&color=15120C&bgcolor=F3E9CF&data=' + enc(SHARE_URL);
+          img.onerror = function(){ qr.innerHTML = '<p class="share-qr-tip">二维码加载失败，请使用「复制链接」分享<br>'+SHARE_URL+'</p>'; };
+          qr.style.display = (qr.style.display === 'flex') ? 'none' : 'flex';
+        }
+        return;
+      }
+      let u = '';
+      if(type === 'weibo'){ u = 'https://service.weibo.com/share/share.php?url='+enc(SHARE_URL)+'&title='+enc(SHARE_TEXT)+'&pic='+enc(SHARE_PIC); }
+      else if(type === 'qq'){ u = 'https://connect.qq.com/widget/shareqq/index.html?url='+enc(SHARE_URL)+'&title='+enc(SHARE_TITLE)+'&pics='+enc(SHARE_PIC)+'&summary='+enc(SHARE_TEXT); }
+      else if(type === 'twitter'){ u = 'https://twitter.com/intent/tweet?url='+enc(SHARE_URL)+'&text='+enc(SHARE_TEXT); }
+      else if(type === 'facebook'){ u = 'https://www.facebook.com/sharer/sharer.php?u='+enc(SHARE_URL); }
+      if(u){ window.open(u, '_blank', 'noopener'); closeShareSheet(); }
+    });
+  });
+
+  /* ===================== 保存命盘（本地） ===================== */
+  const saveBtn = document.getElementById('saveBtn');
+  if(saveBtn){ saveBtn.addEventListener('click', function(){
+    if(!currentReading){ toast('请先完成一次测算再保存'); return; }
+    try{
+      const key = 'facefates_readings';
+      let arr = [];
+      try{ arr = JSON.parse(localStorage.getItem(key) || '[]'); }catch(e){ arr = []; }
+      arr.unshift({ ts: Date.now(), star: currentReading.star.shortZh, dm: currentReading.dm, url: SHARE_URL });
+      arr = arr.slice(0, 20);
+      localStorage.setItem(key, JSON.stringify(arr));
+      toast('命盘已保存到本地 ✦');
+    }catch(e){ toast('保存失败：浏览器存储不可用'); }
   }); }
 </script>
+
+  <!-- ============ 分享面板（主流社媒） ============ -->
+  <div class="share-sheet hidden" id="shareSheet">
+    <div class="share-mask" id="shareMask"></div>
+    <div class="share-panel">
+      <div class="share-panel-head">
+        <span class="share-panel-title">分享「一照知运」</span>
+        <span class="share-close" id="shareClose">×</span>
+      </div>
+      <p class="share-hint">测了我的面相命盘，结果居然… 你也来试试 👀</p>
+      <div class="share-grid">
+        <button class="share-item" data-share="wechat"><span class="share-ico" style="background:#07C160">微</span><span class="share-name">微信</span></button>
+        <button class="share-item" data-share="weibo"><span class="share-ico" style="background:#E6162D">博</span><span class="share-name">微博</span></button>
+        <button class="share-item" data-share="qq"><span class="share-ico" style="background:#12B7F5">Q</span><span class="share-name">QQ</span></button>
+        <button class="share-item" data-share="twitter"><span class="share-ico" style="background:#000">X</span><span class="share-name">Twitter</span></button>
+        <button class="share-item" data-share="facebook"><span class="share-ico" style="background:#1877F2">f</span><span class="share-name">Facebook</span></button>
+        <button class="share-item" data-share="copy"><span class="share-ico" style="background:var(--gold);color:var(--ink)">链</span><span class="share-name">复制链接</span></button>
+        <button class="share-item" data-share="system" id="shareSystem" style="display:none"><span class="share-ico" style="background:#888">⤴</span><span class="share-name">系统分享</span></button>
+      </div>
+      <div class="share-qr" id="shareQr">
+        <img id="shareQrImg" alt="二维码" />
+        <p class="share-qr-tip">微信「扫一扫」打开，或长按保存到相册后分享朋友圈</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
