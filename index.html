@@ -242,6 +242,30 @@
   .share-qr-tip{font-size:11.5px;color:var(--muted);text-align:center;margin:0;line-height:17px;}
   @media (min-width:861px){ .share-sheet{align-items:center;} .share-panel{border-radius:22px;border:1px solid var(--gold);} }
 
+  /* ========== 英文版式适配（英文文案普遍更长，放宽固定宽度容器） ========== */
+  html[lang="en"] .el-name{width:auto;min-width:52px;font-size:13px;}
+  html[lang="en"] .el-val{width:auto;min-width:26px;}
+
+  /* 面相部位：英文如 "Upper Stop · Forehead" 需换行容纳 */
+  html[lang="en"] .face-part{width:112px;font-size:11.5px;line-height:1.4;padding-top:3px;overflow-wrap:break-word;}
+
+  /* 长生十二神：英文名如 Decline/Extinct/Nourish 较长，圆环改胶囊形 */
+  html[lang="en"] .stage-ring{width:auto;min-width:56px;height:56px;padding:0 14px;border-radius:28px;box-sizing:border-box;}
+  html[lang="en"] .stage-ring span{font-size:12.5px !important;}
+
+  /* 分享卡五行名 */
+  html[lang="en"] .sc-el-name{width:auto;min-width:38px;font-size:9.5px;}
+  html[lang="en"] .sc-el-val{width:auto;min-width:22px;}
+
+  /* 大标题：英文标题显著更长，降字号防溢出 */
+  html[lang="en"] .head-title{font-size:25px;line-height:34px;}
+  html[lang="en"] .h1{font-size:34px;line-height:46px;}
+  html[lang="en"] .dim-name{font-size:15px;}
+  html[lang="en"] .dim-sub{font-size:10px;line-height:14px;}
+  html[lang="en"] .star-name{font-size:17px;}
+  html[lang="en"] .brand-name{font-size:17px;letter-spacing:.6px;}
+  html[lang="en"] .chip{font-size:11px;padding:6px 12px;}
+
   @media (max-width:860px){
     .home-body{flex-direction:column;padding:32px 20px;gap:36px;}.left-col{width:100%;}.h1{font-size:34px;line-height:46px;}
     .nav{padding:0 20px;}.result-head{flex-direction:column;align-items:flex-start;padding:28px 20px;gap:20px;}
