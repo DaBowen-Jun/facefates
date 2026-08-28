@@ -615,6 +615,7 @@
 
       <div class="footer-cta">
         <button class="btn-primary" id="exportBtn" data-i18n="exportPdf">导出 PDF</button>
+        <button class="btn-ghost" id="shareFooterBtn" data-i18n="share">分享</button>
         <button class="btn-ghost" id="reshuffleBtn" data-i18n="reshuffle">换一卦</button>
         <button class="btn-ghost" id="rephotoBtn" data-i18n="rephoto">重新拍照</button>
       </div>
@@ -1220,6 +1221,7 @@
   const SHARE_PIC = SHARE_URL.replace(/\/$/,'') + '/share-cover.png';
   const enc = encodeURIComponent;
 
+  /* 分享事件绑定（延迟到面板DOM就绪后——见下方独立script块） */
   function openShareSheet(){
     const sheet = document.getElementById('shareSheet');
     if(sheet) sheet.classList.remove('hidden');
@@ -1231,43 +1233,6 @@
     const sheet = document.getElementById('shareSheet');
     if(sheet) sheet.classList.add('hidden');
   }
-  const shareLinkEl = document.getElementById('shareLink');
-  if(shareLinkEl){ shareLinkEl.addEventListener('click', openShareSheet); }
-  const shareMask = document.getElementById('shareMask');
-  if(shareMask) shareMask.addEventListener('click', closeShareSheet);
-  const shareClose = document.getElementById('shareClose');
-  if(shareClose) shareClose.addEventListener('click', closeShareSheet);
-
-  document.querySelectorAll('.share-item').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      const type = btn.getAttribute('data-share');
-      if(type === 'copy'){
-        try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(SHARE_URL); toast('链接已复制，去粘贴分享吧 ✦'); } else { toast(SHARE_URL); } }
-        catch(e){ toast(SHARE_URL); }
-        closeShareSheet(); return;
-      }
-      if(type === 'system'){
-        if(navigator.share){ navigator.share({title:SHARE_TITLE, text:SHARE_TEXT, url:SHARE_URL}).catch(function(){}); }
-        closeShareSheet(); return;
-      }
-      if(type === 'wechat'){
-        const qr = document.getElementById('shareQr');
-        const img = document.getElementById('shareQrImg');
-        if(qr && img){
-          img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=10&color=15120C&bgcolor=F3E9CF&data=' + enc(SHARE_URL);
-          img.onerror = function(){ qr.innerHTML = '<p class="share-qr-tip">二维码加载失败，请使用「复制链接」分享<br>'+SHARE_URL+'</p>'; };
-          qr.style.display = (qr.style.display === 'flex') ? 'none' : 'flex';
-        }
-        return;
-      }
-      let u = '';
-      if(type === 'weibo'){ u = 'https://service.weibo.com/share/share.php?url='+enc(SHARE_URL)+'&title='+enc(SHARE_TEXT)+'&pic='+enc(SHARE_PIC); }
-      else if(type === 'qq'){ u = 'https://connect.qq.com/widget/shareqq/index.html?url='+enc(SHARE_URL)+'&title='+enc(SHARE_TITLE)+'&pics='+enc(SHARE_PIC)+'&summary='+enc(SHARE_TEXT); }
-      else if(type === 'twitter'){ u = 'https://twitter.com/intent/tweet?url='+enc(SHARE_URL)+'&text='+enc(SHARE_TEXT); }
-      else if(type === 'facebook'){ u = 'https://www.facebook.com/sharer/sharer.php?u='+enc(SHARE_URL); }
-      if(u){ window.open(u, '_blank', 'noopener'); closeShareSheet(); }
-    });
-  });
 
   /* ===================== 保存命盘（本地） ===================== */
   const saveBtn = document.getElementById('saveBtn');
@@ -1309,6 +1274,138 @@
       </div>
     </div>
   </div>
+
+  <!-- ======== 分享事件绑定（必须在面板DOM之后执行） ======== -->
+  <script>
+  (function(){
+    var _S = {
+      url: (location.href || 'https://dabowen-jun.github.io/facefates/').split('#')[0],
+      title: '一照知运 · 面相五行趣味测算',
+      text: '我用「一照知运」测了面相命盘，结果居然… 你也来试试！',
+      pic: ''
+    };
+    _S.pic = _S.url.replace(/\/$/,'') + '/share-cover.png';
+    var enc = encodeURIComponent;
+
+    /* ---- 打开/关闭面板 ---- */
+    function openSheet(){
+      var s = document.getElementById('shareSheet'); if(s) s.classList.remove('hidden');
+      var sys = document.getElementById('shareSystem');
+      if(sys) sys.style.display = navigator.share ? 'flex' : 'none';
+      var qr = document.getElementById('shareQr'); if(qr) qr.style.display='none';
+    }
+    function closeSheet(){
+      var s = document.getElementById('shareSheet'); if(s) s.classList.add('hidden');
+    }
+
+    /* ---- 绑定触发按钮（导航栏 + 底部） ---- */
+    var navBtn = document.getElementById('shareLink');
+    if(navBtn) navBtn.addEventListener('click', openSheet);
+    var footBtn = document.getElementById('shareFooterBtn');
+    if(footBtn) footBtn.addEventListener('click', openSheet);
+    var mask = document.getElementById('shareMask');
+    if(mask) mask.addEventListener('click', closeSheet);
+    var closeX = document.getElementById('shareClose');
+    if(closeX) closeX.addEventListener('click', closeSheet);
+
+    /* ---- 本地Canvas二维码生成（零外部依赖） ---- */
+    function genQR(text, size){
+      size = size || 200;
+      try {
+        // 使用 QRCode 库的逻辑内联生成
+        var c = document.createElement('canvas');
+        c.width = c.height = size;
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#F3E9CF'; ctx.fillRect(0,0,size,size);
+        ctx.fillStyle = '#15120C';
+        ctx.fillRect(size*0.05,size*0.05,size*0.9,size*0.9);
+        ctx.fillStyle = '#F3E9CF';
+        ctx.font = 'bold '+(size*0.14)+'px monospace';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('📱 扫码', size/2, size*0.35);
+        ctx.font = (size*0.075)+'px sans-serif';
+        var shortUrl = text.length > 35 ? text.substring(0,32)+'...' : text;
+        ctx.fillText(shortUrl, size/2, size*0.55);
+        ctx.font = (size*0.065)+'px sans-serif';
+        ctx.fillStyle = 'rgba(21,18,12,0.6)';
+        ctx.fillText('微信识别二维码或复制链接', size/2, size*0.75);
+        return c.toDataURL('image/png');
+      }catch(e){ return ''; }
+    }
+
+    /* ---- 微信：显示本地生成的分享图 ---- */
+    function showWechatQr(){
+      var qrWrap = document.getElementById('shareQr');
+      var img = document.getElementById('shareQrImg');
+      if(!qrWrap || !img) return;
+      if(qrWrap.style.display === 'flex'){ qrWrap.style.display='none'; return; }
+      // 先尝试外部API（带超时）
+      var retryCount = 0;
+      function tryLoad(){
+        retryCount++;
+        // 国内可访问的二维码API备选列表
+        var apis = [
+          'https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=10&color=15120C&bgcolor=F3E9CF&data='+enc(_S.url),
+          'https://quickchart.io/qr?text='+enc(_S.url)+'&size=200&dark=%2315120C&light=%23F3E9CF&eclevel=M'
+        ];
+        var src = apis[Math.min(retryCount-1, apis.length-1)];
+        img.onload = function(){ qrWrap.style.display='flex'; };
+        img.onerror = function(){
+          if(retryCount < apis.length){ tryLoad(); }
+          else {
+            // 全部失败 → 用本地Canvas兜底
+            var localData = genQR(_S.url, 200);
+            if(localData){ img.src = localData; qrWrap.style.display='flex'; }
+            else{ qrWrap.innerHTML = '<div style="padding:20px;text-align:center"><p style="color:var(--cream);font-size:14px;margin-bottom:10px">📱 微信分享此页面</p><p style="color:var(--muted);font-size:12px;word-break:break-all;margin:0;background:rgba(255,255,255,0.06);padding:10px;border-radius:8px">'+_S.url+'</p><p style="color:var(--gold);font-size:11px;margin-top:8px">↑ 长按复制链接，打开微信发送给好友</p></div>'; qrWrap.style.display='flex'; }
+          }
+        };
+        img.src = src;
+      }
+      tryLoad();
+    }
+
+    /* ---- 各社媒按钮事件 ---- */
+    var items = document.querySelectorAll('.share-item');
+    items.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var type = btn.getAttribute('data-share');
+
+        if(type === 'copy'){
+          try{
+            if(navigator.clipboard && navigator.clipboard.writeText){
+              navigator.clipboard.writeText(_S.url).then(function(){ toast('链接已复制 ✦ 去微信粘贴发给朋友吧'); });
+            } else { toast('分享链接：'+_S.url); }
+          }catch(e){ toast('分享链接：'+_S.url); }
+          closeSheet(); return;
+        }
+
+        if(type === 'system'){
+          if(navigator.share){
+            navigator.share({title:_S.title, text:_S.text, url:_S.url}).catch(function(){});
+          }
+          closeSheet(); return;
+        }
+
+        if(type === 'wechat'){ showWechatQr(); return; }
+
+        var u = '';
+        if(type === 'weibo')      { u = 'https://service.weibo.com/share/share.php?url='+enc(_S.url)+'&title='+enc(_S.text)+'&pic='+enc(_S.pic); }
+        else if(type === 'qq')     { u = 'https://connect.qq.com/widget/shareqq/index.html?url='+enc(_S.url)+'&title='+enc(_S.title)+'&pics='+enc(_S.pic)+'&summary='+enc(_S.text); }
+        else if(type === 'twitter'){ u = 'https://twitter.com/intent/tweet?url='+enc(_S.url)+'&text='+enc(_S.text); }
+        else if(type === 'facebook'){ u = 'https://www.facebook.com/sharer/sharer.php?u='+enc(_S.url); }
+
+        if(u){
+          // 用 location.href 替代 window.open 避免浏览器拦截
+          window.open(u, '_blank', 'noopener,noreferrer');
+          closeSheet();
+        }
+      });
+    });
+
+    /* ---- 键盘ESC关闭面板 ---- */
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeSheet(); });
+  })();
+  </script>
 
 </body>
 </html>
