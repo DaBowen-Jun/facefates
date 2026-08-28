@@ -15,6 +15,14 @@
 <meta name="twitter:title" content="一照知运 · 拍照算命" />
 <meta name="twitter:description" content="拍照算命 · 面相五行趣味测算 — 命运掌握在自己手中，娱乐仅供参考。" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='none' stroke='%23C9A24B' stroke-width='1.5'/><path d='M16 2 A7 7 0 0 1 16 16 A7 7 0 0 0 16 30 A14 14 0 0 1 16 2Z' fill='%23C9A24B'/><circle cx='16' cy='9' r='2.2' fill='%2315120C'/><circle cx='16' cy='23' r='2.2' fill='%23C9A24B'/></svg>" />
+<!-- ===== PWA ===== -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#C9A24B" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="一照知运" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
@@ -221,6 +229,7 @@
   .sc-dim-fill{height:100%;}
   .sc-quote{margin-top:16px;padding-top:13px;border-top:1px dashed rgba(201,162,75,.3);font-family:"Noto Serif SC",serif;font-size:13px;line-height:22px;color:var(--gold-lite);text-align:center;}
   .sc-foot{margin-top:13px;text-align:center;font-size:10px;color:var(--faint);letter-spacing:.4px;}
+  .sc-savetip{margin-top:9px;text-align:center;font-size:10.5px;color:var(--gold);opacity:.85;letter-spacing:.3px;}
 
   /* ========== 分享面板（主流社媒） ========== */
   .share-sheet{position:fixed;inset:0;z-index:100000;display:flex;align-items:flex-end;justify-content:center;}
@@ -265,6 +274,22 @@
   html[lang="en"] .star-name{font-size:17px;}
   html[lang="en"] .brand-name{font-size:17px;letter-spacing:.6px;}
   html[lang="en"] .chip{font-size:11px;padding:6px 12px;}
+
+  /* ========== 微信内分享引导蒙层 ========== */
+  .wx-guide{position:fixed;inset:0;z-index:100000;background:rgba(8,7,4,.9);display:none;flex-direction:column;align-items:flex-end;padding:16px 24px 0;cursor:pointer;}
+  .wx-guide.show{display:flex;}
+  .wx-guide-arrow{font-size:40px;color:var(--gold-lite);line-height:1;margin-right:4px;animation:wxNudge 1.2s ease-in-out infinite;}
+  @keyframes wxNudge{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  .wx-guide-txt{margin-top:8px;text-align:right;color:var(--cream);font-size:16px;font-weight:600;line-height:26px;font-family:"Noto Sans SC",sans-serif;}
+  .wx-guide-txt b{color:var(--gold-lite);font-size:19px;}
+  .wx-guide-txt small{display:block;margin-top:10px;font-size:12.5px;font-weight:400;color:var(--muted);line-height:20px;}
+
+  /* ========== PWA 安装提示条 ========== */
+  .pwa-tip{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:99998;display:none;align-items:center;gap:12px;background:rgba(28,23,15,.97);border:1px solid var(--gold);border-radius:999px;padding:10px 12px 10px 18px;box-shadow:0 10px 30px rgba(0,0,0,.5);max-width:calc(100vw - 32px);}
+  .pwa-tip.show{display:flex;}
+  .pwa-tip span{font-size:12.5px;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .pwa-tip button{background:var(--gold);color:var(--ink);border:none;border-radius:999px;padding:8px 16px;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:"Noto Sans SC",sans-serif;}
+  .pwa-tip .pwa-close{background:none;color:var(--muted);font-size:18px;padding:0 6px;font-weight:400;}
 
   @media (max-width:860px){
     .home-body{flex-direction:column;padding:32px 20px;gap:36px;}.left-col{width:100%;}.h1{font-size:34px;line-height:46px;}
@@ -634,6 +659,7 @@
           </div>
           <div class="sc-quote" id="scQuote"></div>
           <div class="sc-foot">面相 · 五行 · 拍照趣味测算 — dabowen-jun.github.io/facefates</div>
+          <div class="sc-savetip">📱 长按卡片保存到相册，或直接截图分享给朋友</div>
         </div>
       </div>
 
@@ -1322,11 +1348,20 @@
       var s = document.getElementById('shareSheet'); if(s) s.classList.add('hidden');
     }
 
-    /* ---- 绑定触发按钮（导航栏 + 底部） ---- */
+    /* ---- 绑定触发按钮（导航栏 + 底部）---- 微信内改走引导蒙层 ---- */
+    var isWechat = /MicroMessenger/i.test(navigator.userAgent || '');
+    function handleShare(){
+      if(isWechat){
+        var g = document.getElementById('wxGuide');
+        if(g) g.classList.add('show');
+        return;
+      }
+      openSheet();
+    }
     var navBtn = document.getElementById('shareLink');
-    if(navBtn) navBtn.addEventListener('click', openSheet);
+    if(navBtn) navBtn.addEventListener('click', handleShare);
     var footBtn = document.getElementById('shareFooterBtn');
-    if(footBtn) footBtn.addEventListener('click', openSheet);
+    if(footBtn) footBtn.addEventListener('click', handleShare);
     var mask = document.getElementById('shareMask');
     if(mask) mask.addEventListener('click', closeSheet);
     var closeX = document.getElementById('shareClose');
@@ -1428,6 +1463,93 @@
 
     /* ---- 键盘ESC关闭面板 ---- */
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeSheet(); });
+  })();
+  </script>
+
+  <!-- ======== 微信内分享引导蒙层 ======== -->
+  <div class="wx-guide" id="wxGuide">
+    <div class="wx-guide-arrow">☝</div>
+    <div class="wx-guide-txt">
+      点击右上角 <b>⋯</b> 菜单
+      <small>选择「发送给朋友」或「分享到朋友圈」<br>微信内无法直接唤起分享，感谢理解 🙏</small>
+    </div>
+  </div>
+
+  <!-- ======== PWA 添加到主屏幕提示 ======== -->
+  <div class="pwa-tip" id="pwaTip">
+    <span id="pwaTipText">把「一照知运」添加到主屏幕，像 App 一样打开</span>
+    <button id="pwaInstallBtn">添加</button>
+    <button class="pwa-close" id="pwaClose">×</button>
+  </div>
+
+  <!-- ======== PWA / 微信引导 逻辑 ======== -->
+  <script>
+  (function(){
+    /* ---------- 1. Service Worker 注册 ---------- */
+    if('serviceWorker' in navigator && location.protocol.indexOf('http') === 0){
+      window.addEventListener('load', function(){
+        navigator.serviceWorker.register('sw.js').catch(function(){});
+      });
+    }
+
+    /* ---------- 2. 微信引导蒙层：点任意处关闭 ---------- */
+    var wxGuide = document.getElementById('wxGuide');
+    if(wxGuide){
+      wxGuide.addEventListener('click', function(){ wxGuide.classList.remove('show'); });
+    }
+
+    /* ---------- 3. PWA 安装提示 ---------- */
+    var deferredPrompt = null;
+    var pwaTip  = document.getElementById('pwaTip');
+    var pwaBtn  = document.getElementById('pwaInstallBtn');
+    var pwaClose= document.getElementById('pwaClose');
+    var pwaText = document.getElementById('pwaTipText');
+
+    // 已独立窗口运行（已安装）则不再提示
+    var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    var dismissed = false;
+    try{ dismissed = localStorage.getItem('facefates_pwa_dismissed') === '1'; }catch(e){}
+
+    window.addEventListener('beforeinstallprompt', function(e){
+      e.preventDefault();
+      deferredPrompt = e;
+      if(!standalone && !dismissed && pwaTip) pwaTip.classList.add('show');
+    });
+
+    if(pwaBtn){
+      pwaBtn.addEventListener('click', function(){
+        if(deferredPrompt){
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then(function(){
+            deferredPrompt = null;
+            if(pwaTip) pwaTip.classList.remove('show');
+          });
+        } else {
+          // iOS Safari 无 beforeinstallprompt，改为文字指引
+          if(pwaText) pwaText.textContent = '点击浏览器「分享」按钮 → 选择「添加到主屏幕」';
+        }
+      });
+    }
+
+    if(pwaClose){
+      pwaClose.addEventListener('click', function(){
+        if(pwaTip) pwaTip.classList.remove('show');
+        try{ localStorage.setItem('facefates_pwa_dismissed','1'); }catch(e){}
+      });
+    }
+
+    // iOS 且未安装时，给一次文字引导（延迟出现，避免打扰）
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if(isIOS && !standalone && !dismissed && pwaTip && pwaText){
+      setTimeout(function(){
+        if(!deferredPrompt && !pwaTip.classList.contains('show')){
+          pwaText.textContent = '点击底部「分享」→「添加到主屏幕」，像 App 一样打开';
+          pwaBtn.textContent = '知道了';
+          pwaTip.classList.add('show');
+        }
+      }, 6000);
+    }
   })();
   </script>
 

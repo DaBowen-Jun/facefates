@@ -1,0 +1,33 @@
+{
+  "name": "一照知运 FaceFates · Chinese Face Reading",
+  "short_name": "一照知运",
+  "description": "拍照算命 · 面相五行趣味测算 / Snap a selfie, get a Chinese face-reading destiny report. 100% on-device, no signup.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0906",
+  "theme_color": "#C9A24B",
+  "lang": "zh-CN",
+  "categories": ["entertainment", "lifestyle"],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
