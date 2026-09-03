@@ -23,6 +23,23 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="一照知运" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<!-- ===== Microsoft Clarity（热图 + 会话录制）=====
+     隐私说明：所有承载用户照片的元素均已加 data-clarity-mask="true"，
+     Clarity 不会上传被 mask 的内容。切勿移除这些属性。
+-->
+<script type="text/javascript">
+  (function(){
+    /* ↓↓↓ 替换成你的 Clarity Project ID（Clarity 后台 → Settings → Overview 里的纯数字 ID）↓↓↓ */
+    var CLARITY_ID = 'YOUR_CLARITY_PROJECT_ID';
+    /* 未配置 ID 时静默跳过，不报错、不发请求 */
+    if(!/^\d+$/.test(CLARITY_ID)) return;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", CLARITY_ID);
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
@@ -346,7 +363,7 @@
       </div>
       <div class="right-col">
         <div class="camera-module">
-          <div class="capture-ring"><div class="ring-border"></div><div class="photo-slot"><video id="liveVideo" autoplay playsinline muted></video><div class="slot-hint" id="slotHint"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="#9C9180" stroke-width="1.6"/><circle cx="12" cy="13" r="4" stroke="#9C9180" stroke-width="1.6"/><path d="M8 6l1.5-2h5L16 6" stroke="#9C9180" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-i18n="slotHint">正脸对准取景框</span></div></div></div>
+          <div class="capture-ring" data-clarity-mask="true"><div class="ring-border"></div><div class="photo-slot"><video id="liveVideo" autoplay playsinline muted></video><div class="slot-hint" id="slotHint"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="#9C9180" stroke-width="1.6"/><circle cx="12" cy="13" r="4" stroke="#9C9180" stroke-width="1.6"/><path d="M8 6l1.5-2h5L16 6" stroke="#9C9180" stroke-width="1.6" stroke-linejoin="round"/></svg><span data-i18n="slotHint">正脸对准取景框</span></div></div></div>
           <button class="capture-btn" id="captureBtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="3" stroke="#15120C" stroke-width="1.8"/><circle cx="12" cy="13" r="4" stroke="#15120C" stroke-width="1.8"/><path d="M8 6l1.5-2h5L16 6" stroke="#15120C" stroke-width="1.8" stroke-linejoin="round"/></svg><span data-i18n="capture">拍照</span></button>
           <div class="capture-hint" data-i18n="captureHint">正脸 · 光线充足 · 免冠</div>
           <input type="file" id="fileInput" accept="image/*" hidden />
@@ -392,7 +409,7 @@
 
     <!-- 头部：面相 + 命格标题 -->
     <div class="result-head">
-      <div class="face-thumb"><img id="resultFace" alt="面相" /><span class="ph" data-i18n="facePh">面相</span></div>
+      <div class="face-thumb" data-clarity-mask="true"><img id="resultFace" alt="面相" /><span class="ph" data-i18n="facePh">面相</span></div>
       <div class="head-text">
           <div class="head-eyebrow" data-i18n="headEye">命盘推演完成</div>
           <div class="head-title" id="headTitle"></div>
@@ -649,7 +666,7 @@
             <span class="sc-seal">面相<br>·<br>五行</span>
           </div>
           <div class="sc-main">
-            <div class="sc-face"><img id="scFace" alt="面相" /><span class="sc-emblem" id="scEmblem">命</span></div>
+            <div class="sc-face" data-clarity-mask="true"><img id="scFace" alt="面相" /><span class="sc-emblem" id="scEmblem">命</span></div>
             <div class="sc-info">
               <div class="sc-title" id="scTitle"></div>
               <div class="sc-chips" id="scChips"></div>
